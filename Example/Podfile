@@ -1,0 +1,6 @@
+use_frameworks!
+target 'Pelican_Tests' do
+  pod 'Pelican', :path => '../'
+  
+  
+end
