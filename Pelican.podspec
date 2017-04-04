@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Pelican'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Pelican.'
+  s.summary          = 'Batch processing library written in Swift'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,19 +18,19 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Pelican is a persisted batching library useful for log rolling, event logging or doing other periodic background processing.
                        DESC
 
-  s.homepage         = 'https://github.com/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican'
+  s.homepage         = 'https://github.com/litso/Pelican'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'bd755bf4f7e672000cab58c4b721a8cdbe22a839' => 'robmanson@gmail.com' }
-  s.source           = { :git => 'https://github.com/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/clutter/Pelican.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Pelican/Classes/**/*'
+  s.source_files = 'Pelican/Lib/**/*'
   
   # s.resource_bundles = {
   #   'Pelican' => ['Pelican/Assets/*.png']

@@ -7,19 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* UserDefaultsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */; };
 		8FA38BCAFC97895BD516A517 /* Pods_Pelican_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E330028AAF792D4EFFC814A9 /* Pods_Pelican_Tests.framework */; };
+		AF87C4121E985C41001F9956 /* TaskContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87C4111E985C41001F9956 /* TaskContainerTests.swift */; };
+		AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4918C1E95B199006602C0 /* PelicanTests.swift */; };
+		AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */; };
+		AFE84B9A1E945D4300BFFA27 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B750518C8781261FD230C28 /* Pelican.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = Pelican.podspec; path = ../Pelican.podspec; sourceTree = "<group>"; };
-		5119CDFF139FAAC61D99C496 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		58A4139813D75F8839EE1EB7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		0B750518C8781261FD230C28 /* Pelican.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Pelican.podspec; path = ../Pelican.podspec; sourceTree = "<group>"; };
+		5119CDFF139FAAC61D99C496 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		58A4139813D75F8839EE1EB7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Pelican_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pelican_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTests.swift; sourceTree = "<group>"; };
 		6521761099994FF7BEBD5CD0 /* Pods-Pelican_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelican_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6B9309D3E20FCA458FD368E4 /* Pods-Pelican_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelican_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF87C4111E985C41001F9956 /* TaskContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskContainerTests.swift; sourceTree = "<group>"; };
+		AFA4918C1E95B199006602C0 /* PelicanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanTests.swift; sourceTree = "<group>"; };
+		AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanExampleTests.swift; sourceTree = "<group>"; };
+		AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
 		E330028AAF792D4EFFC814A9 /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelican_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,8 +65,12 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */,
+				AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */,
+				AFA4918C1E95B199006602C0 /* PelicanTests.swift */,
+				AF87C4111E985C41001F9956 /* TaskContainerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -131,12 +143,9 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0820;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = NQ769X6ZXR;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -223,7 +232,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				AF87C4121E985C41001F9956 /* TaskContainerTests.swift in Sources */,
+				AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */,
+				AFE84B9A1E945D4300BFFA27 /* InMemoryStorage.swift in Sources */,
+				AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* UserDefaultsStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B9309D3E20FCA458FD368E4 /* Pods-Pelican_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = NQ769X6ZXR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -341,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6521761099994FF7BEBD5CD0 /* Pods-Pelican_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = NQ769X6ZXR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
