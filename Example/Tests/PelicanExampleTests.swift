@@ -1,17 +1,25 @@
-# Pelican
+//
+//  PelicanExampleTests.swift
+//  Pelican
+//
+//  Test the example code in the Readme
+//
+//  Created by Robert Manson on 4/3/17.
+//  Copyright © 2017 CocoaPods. All rights reserved.
+//
 
-[![CI Status](http://img.shields.io/travis/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican.svg?style=flat)](https://travis-ci.org/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican)
-[![Version](https://img.shields.io/cocoapods/v/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
-[![License](https://img.shields.io/cocoapods/l/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
-[![Platform](https://img.shields.io/cocoapods/p/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
+import XCTest
+import Pelican
 
-Pelican is a persisted batching library useful for log rolling, event logging or doing other periodic background processing.
+class API {
+    static var shared = API()
+    var collected = [Any]()
+    func postEvents(json: [Any], done: (Error?) -> Void) {
+        collected.append(contentsOf: json)
+        done(nil)
+    }
+}
 
-## Example
-
-The following is an example of setting up custom event logging, for example to your own API using Pelican to batch upload tasks.
-
-```swift
 protocol AppEvents: PelicanGroupable {
     var eventName: String { get }
     var timeStamp: Date { get }
@@ -69,35 +77,24 @@ struct LogInEvent: PelicanBatchableTask, AppEvents {
         ]
     }
 }
-```
 
-Register your batchable tasks as soon as possible, for example in ```application(_ application: UIApplication, didFinishLaunchingWithOptions...```
+// Other app events omitted for brevity but by implementing our "AppEvents" protocol, they 
+// can all be batched together to a single endpoint
 
-```swift
-Pelican.register(tasks: [LogInEvent.self])
-```
+class PelicanExampleTests: XCTestCase {
+    func testExample() {
+        let storage = InMemoryStorage()
+        API.shared.collected = []
+        Pelican.register(tasks: [LogInEvent.self], storage: storage)
+        Pelican.shared.gulp(task: LogInEvent(userName: "Ender Wiggin"))
+        Pelican.shared.gulp(task: LogInEvent(userName: "Mazer Rackham"))
+        let tasksGulped = expectation(description: "Tasks Gulped and Processed")
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .seconds(6)) {
+            tasksGulped.fulfill()
+        }
 
-When the user performs an event we log it with Pelican, after 5 seconds events are grouped and ```processGroup``` is called to send them.
-
-```swift
-Pelican.shared.gulp(task: LogInEvent(userName: "Ender Wiggin"))
-```
-
-## Requirements
-
-## Installation
-
-Pelican is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "Pelican"
-```
-
-## Author
-
-bd755bf4f7e672000cab58c4b721a8cdbe22a839, robmanson@gmail.com
-
-## License
-
-Pelican is available under the MIT license. See the LICENSE file for more info.
+        waitForExpectations(timeout: 7.0) { _ in
+            XCTAssert(API.shared.collected.count == 2)
+        }
+    }
+}
