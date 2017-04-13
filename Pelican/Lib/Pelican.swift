@@ -143,37 +143,39 @@ public class Pelican {
     @objc func timerFired() {
         guard isRunning, activeGroup == nil else { return }
 
-        for (group, containers) in containersByGroup {
-            activeGroup = (group, containers)
-            guard let firstContainer = containers.first else { containersByGroup.removeValue(forKey: group); continue }
-            guard let taskType = typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
+        DispatchQueue.global(qos: .userInitiated).async {
+            for (group, containers) in self.containersByGroup {
+                self.activeGroup = (group, containers)
+                guard let firstContainer = containers.first else { self.containersByGroup.removeValue(forKey: group); continue }
+                guard let taskType = self.typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
 
-            var retry = true
-            let sema = DispatchSemaphore(value: 0)
-            while retry {
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let tasks = containers.map({ $0.task })
-                    taskType.processGroup(tasks: tasks, didComplete: { (result) in
-                        switch result {
-                        case .done:
-                            let filtered = self.containersByGroup[group]?.filter { elem in
-                                return !containers.contains(where: { elem == $0 })
-                            } ?? []
-                            if filtered.count > 0 {
-                                self.containersByGroup[group] = filtered
-                            } else {
-                                self.containersByGroup.removeValue(forKey: group)
+                var retry = true
+                let sema = DispatchSemaphore(value: 0)
+                while retry {
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        let tasks = containers.map({ $0.task })
+                        taskType.processGroup(tasks: tasks, didComplete: { (result) in
+                            switch result {
+                            case .done:
+                                let filtered = self.containersByGroup[group]?.filter { elem in
+                                    return !containers.contains(where: { elem == $0 })
+                                    } ?? []
+                                if filtered.count > 0 {
+                                    self.containersByGroup[group] = filtered
+                                } else {
+                                    self.containersByGroup.removeValue(forKey: group)
+                                }
+
+                                retry = false
+                                self.activeGroup = nil
+                            case .retry:
+                                break
                             }
-
-                            retry = false
-                            self.activeGroup = nil
-                        case .retry:
-                            break
-                        }
-                        sema.signal()
-                    })
+                            sema.signal()
+                        })
+                    }
+                    sema.wait()
                 }
-                sema.wait()
             }
         }
     }
