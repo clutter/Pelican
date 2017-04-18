@@ -143,8 +143,20 @@ public class Pelican {
     @objc func timerFired() {
         guard isRunning, activeGroup == nil else { return }
 
+        // Chunk containers into 100 maximum per group
+
+        typealias GroupsArray = [(String, [TaskContainer])]
+        let maxChunck = 100
+        let containersAndGroups: GroupsArray = containersByGroup.flatMap { (pair: (group: String, containers: [Pelican.TaskContainer])) -> GroupsArray in
+            let chunks = stride(from: 0, to: pair.containers.count, by: maxChunck).map {
+                Array(pair.containers[$0..<min($0 + maxChunck, pair.containers.count)])
+            }
+            let pairedChunks: GroupsArray = chunks.map({ (pair.group, $0) })
+            return pairedChunks
+        }
+
         DispatchQueue.global(qos: .userInitiated).async {
-            for (group, containers) in self.containersByGroup {
+            for (group, containers) in containersAndGroups {
                 self.activeGroup = (group, containers)
                 guard let firstContainer = containers.first else { self.containersByGroup.removeValue(forKey: group); continue }
                 guard let taskType = self.typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
