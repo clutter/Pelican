@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		607FACEC1AFB9204008FA782 /* UserDefaultsStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */; };
 		8FA38BCAFC97895BD516A517 /* Pods_Pelican_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E330028AAF792D4EFFC814A9 /* Pods_Pelican_Tests.framework */; };
+		AF54286C1EAFE75C003F1256 /* RetryTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF54286B1EAFE75C003F1256 /* RetryTaskTests.swift */; };
 		AF87C4121E985C41001F9956 /* TaskContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF87C4111E985C41001F9956 /* TaskContainerTests.swift */; };
 		AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4918C1E95B199006602C0 /* PelicanTests.swift */; };
 		AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */; };
@@ -24,6 +25,7 @@
 		607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageTests.swift; sourceTree = "<group>"; };
 		6521761099994FF7BEBD5CD0 /* Pods-Pelican_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelican_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6B9309D3E20FCA458FD368E4 /* Pods-Pelican_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pelican_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		AF54286B1EAFE75C003F1256 /* RetryTaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryTaskTests.swift; sourceTree = "<group>"; };
 		AF87C4111E985C41001F9956 /* TaskContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskContainerTests.swift; sourceTree = "<group>"; };
 		AFA4918C1E95B199006602C0 /* PelicanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanTests.swift; sourceTree = "<group>"; };
 		AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanExampleTests.swift; sourceTree = "<group>"; };
@@ -67,10 +69,11 @@
 			children = (
 				AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */,
 				AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */,
-				607FACE91AFB9204008FA782 /* Supporting Files */,
-				607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */,
 				AFA4918C1E95B199006602C0 /* PelicanTests.swift */,
+				AF54286B1EAFE75C003F1256 /* RetryTaskTests.swift */,
+				607FACE91AFB9204008FA782 /* Supporting Files */,
 				AF87C4111E985C41001F9956 /* TaskContainerTests.swift */,
+				607FACEB1AFB9204008FA782 /* UserDefaultsStorageTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				AF87C4121E985C41001F9956 /* TaskContainerTests.swift in Sources */,
 				AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */,
 				AFE84B9A1E945D4300BFFA27 /* InMemoryStorage.swift in Sources */,
+				AF54286C1EAFE75C003F1256 /* RetryTaskTests.swift in Sources */,
 				AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* UserDefaultsStorageTests.swift in Sources */,
 			);
