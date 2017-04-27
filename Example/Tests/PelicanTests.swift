@@ -126,6 +126,8 @@ fileprivate struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
     }
 }
 
+/// Test the example code in the ReadMe
+
 class PelicanTests: XCTestCase {
     func testExample() {
         let letosDate: Date = Date.distantFuture
@@ -163,6 +165,13 @@ class PelicanTests: XCTestCase {
         XCTAssert(storage.store?["Dune Character Group"]?.count == 2)
 
         Pelican.shared.willEnterForeground()
+
+        let storageLoaded = expectation(description: "Wait for storage to load")
+        DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .seconds(1)) {
+            storageLoaded.fulfill()
+        }
+        waitForExpectations(timeout: 2.0, handler: nil)
+
         XCTAssert(storage.store == nil)
 
         let moreTasksGulped = expectation(description: "More Tasks Gulped and Processed")

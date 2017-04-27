@@ -197,15 +197,21 @@ fileprivate extension Pelican {
     // MARK: - Start or stop batch processing
 
     func start() {
-        unarchiveGroups()
+        guard !isRunning else { return }
 
-        isRunning = true
-        guard timer == nil else { return }
-        timer = Timer.scheduledTimer(timeInterval: 5.0,
-                                     target: self,
-                                     selector: #selector(timerFired),
-                                     userInfo: nil,
-                                     repeats: true)
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.unarchiveGroups()
+
+            self.isRunning = true
+            guard self.timer == nil else { return }
+            DispatchQueue.main.async {
+                self.timer = Timer.scheduledTimer(timeInterval: 5.0,
+                                                  target: self,
+                                                  selector: #selector(self.timerFired),
+                                                  userInfo: nil,
+                                                  repeats: true)
+            }
+        }
     }
 
     func stop() {
