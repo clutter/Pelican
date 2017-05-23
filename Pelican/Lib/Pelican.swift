@@ -10,7 +10,7 @@ import Foundation
 
 public enum PelicanProcessResult {
     case done
-    case retry
+    case retry(delay: TimeInterval)
 }
 
 public protocol PelicanGroupable {
@@ -162,9 +162,10 @@ public class Pelican {
                 guard let taskType = self.typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
 
                 var retry = true
+                var retryDelay: TimeInterval = 0
                 let sema = DispatchSemaphore(value: 0)
                 while retry {
-                    DispatchQueue.global(qos: .userInitiated).async {
+                    DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + retryDelay) {
                         let tasks = containers.map({ $0.task })
                         taskType.processGroup(tasks: tasks, didComplete: { (result) in
                             switch result {
@@ -180,8 +181,8 @@ public class Pelican {
 
                                 retry = false
                                 self.activeGroup = nil
-                            case .retry:
-                                break
+                            case .retry(let delay):
+                                retryDelay = delay
                             }
                             sema.signal()
                         })
