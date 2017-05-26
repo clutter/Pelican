@@ -42,7 +42,7 @@ extension AppEvents {
                 didComplete(PelicanProcessResult.done)
             } else {
                 // Retry will call process group again until succesful
-                didComplete(PelicanProcessResult.retry)
+                didComplete(PelicanProcessResult.retry(delay: 0))
             }
         }
     }

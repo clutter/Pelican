@@ -37,7 +37,7 @@ extension RetryGroup where Self: PelicanBatchableTask {
     static func processGroup(tasks: [PelicanBatchableTask], didComplete: @escaping ((PelicanProcessResult) -> Void)) {
         guard TaskCollector.shared.retryCount >= 3 else {
             TaskCollector.shared.retryCount += 1
-            didComplete(.retry)
+            didComplete(.retry(delay: 0))
             return
         }
 
