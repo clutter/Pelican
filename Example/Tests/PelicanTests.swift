@@ -226,13 +226,53 @@ class PelicanTests: XCTestCase {
                 return
             }
 
-            let taskOne = duneCharacterGroup[0]["task"] as! [String: Any]
-            XCTAssertEqual(taskOne["name"] as? String, "Duke Leto")
-            XCTAssertEqual(taskOne["timeStamp"] as? Date, .distantPast)
+            if let taskOne = duneCharacterGroup[0]["task"] as? [String: Any] {
+                XCTAssertEqual(taskOne["name"] as? String, "Duke Leto")
+                XCTAssertEqual(taskOne["timeStamp"] as? Date, .distantPast)
+            } else {
+                XCTFail("Missing task dictionary for first task")
+            }
 
-            let taskTwo = duneCharacterGroup[1]["task"] as! [String: Any]
-            XCTAssertEqual(taskTwo["name"] as? String, "Glossu Rabban")
-            XCTAssertEqual(taskTwo["weapon"] as? String, "brutishness")
+            if let taskTwo = duneCharacterGroup[1]["task"] as? [String: Any] {
+                XCTAssertEqual(taskTwo["name"] as? String, "Glossu Rabban")
+                XCTAssertEqual(taskTwo["weapon"] as? String, "brutishness")
+            } else {
+                XCTFail("Missing task dictionary for second task")
+            }
+        } else {
+            XCTFail("Storage does not contain correct group")
+        }
+    }
+
+    func testUnarchiveGroupsReturnsUnarchivedTasks() {
+        let storage = InMemoryStorage()
+        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self ]
+
+        let serializedTask: [String: Any] = [ "id": "foo",
+                                              "task": [ "name": "Duke Leto", "timeStamp": Date.distantPast],
+                                              "taskType": HouseAtreides.taskType ]
+        storage.store = [ "Dune Character Group": [ serializedTask ] ]
+
+        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+
+        pelican.unarchiveGroups()
+
+        XCTAssertEqual(pelican.containersByGroup.count, 1)
+        if let duneCharacterGroup = pelican.containersByGroup["Dune Character Group"] {
+            guard duneCharacterGroup.count == 1 else {
+                XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
+                return
+            }
+
+            let taskContainer = duneCharacterGroup[0]
+            XCTAssertEqual(taskContainer.identifier, "foo")
+            XCTAssertEqual(taskContainer.containerDictionary["taskType"] as? String, HouseAtreides.taskType)
+            if let task = taskContainer.task as? HouseAtreides {
+                XCTAssertEqual(task.name, "Duke Leto")
+                XCTAssertEqual(task.timeStamp, Date.distantPast)
+            } else {
+                XCTFail("Task is not correct type (expected \(HouseAtreides.self), got \(type(of: taskContainer.task))")
+            }
         } else {
             XCTFail("Storage does not contain correct group")
         }
