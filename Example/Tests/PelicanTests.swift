@@ -194,4 +194,16 @@ class PelicanTests: XCTestCase {
         Pelican.shared.didEnterBackground()
         XCTAssert(storage.store == nil)
     }
+
+    func testArchiveGroupsDoesNotSaveTaskGroupsToStorageWhenNoGroups() {
+        let storage = InMemoryStorage()
+        // This is done to test that we are calling deleteAll (which sets the storage to nil) properly
+        storage.store = [:]
+        let pelican = Pelican(typeToTask: [:], storage: storage)
+
+        pelican.archiveGroups()
+
+        // This should be nil, since we shouldn't call overwriteGroups
+        XCTAssertNil(storage.store)
+    }
 }
