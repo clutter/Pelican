@@ -194,7 +194,7 @@ public class Pelican {
     }
 }
 
-fileprivate extension Pelican {
+extension Pelican {
     // MARK: - Start or stop batch processing
 
     func start() {
@@ -248,7 +248,7 @@ fileprivate extension Pelican {
         }
     }
 
-    func toDictionary(taskGroups: Pelican.GroupedTasks) -> PelicanStorage.Serialized {
+    private func toDictionary(taskGroups: Pelican.GroupedTasks) -> PelicanStorage.Serialized {
         var dict: PelicanStorage.Serialized = [: ]
         for (group, containers) in taskGroups {
             let serialized: [[String: Any]] = containers.map { $0.containerDictionary }
@@ -257,7 +257,7 @@ fileprivate extension Pelican {
         return dict
     }
 
-    func fromDictionary(serialized: PelicanStorage.Serialized) -> Pelican.GroupedTasks {
+    private func fromDictionary(serialized: PelicanStorage.Serialized) -> Pelican.GroupedTasks {
         var taskGroups: Pelican.GroupedTasks = [: ]
         for (group, array) in serialized {
             taskGroups[group] = array.flatMap({ containerDict in
