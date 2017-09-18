@@ -244,7 +244,20 @@ class PelicanTests: XCTestCase {
         }
     }
 
-    func testUnarchiveGroupsReturnsUnarchivedTasks() {
+    func testUnarchiveGroupsLoadsNoTaskGroupsFromEmptyStorage() {
+        let storage = InMemoryStorage()
+        storage.store = [:]
+
+        let pelican = Pelican(typeToTask: [:], storage: storage)
+
+        pelican.unarchiveGroups()
+
+        XCTAssertTrue(pelican.containersByGroup.isEmpty)
+        // This should be nil, since we set storage to empty after unarchiving
+        XCTAssertNil(storage.store)
+    }
+
+    func testUnarchiveGroupsLoadsArchivedTasksFromStorage() {
         let storage = InMemoryStorage()
         let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self ]
 
