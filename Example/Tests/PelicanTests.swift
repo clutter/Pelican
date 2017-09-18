@@ -194,4 +194,100 @@ class PelicanTests: XCTestCase {
         Pelican.shared.didEnterBackground()
         XCTAssert(storage.store == nil)
     }
+
+    func testArchiveGroupsDoesNotSaveTaskGroupsToStorageWhenNoGroups() {
+        let storage = InMemoryStorage()
+        // This is done to test that we are calling deleteAll (which sets the storage to nil) properly
+        storage.store = [:]
+        let pelican = Pelican(typeToTask: [:], storage: storage)
+
+        pelican.archiveGroups()
+
+        // This should be nil, since we shouldn't call overwriteGroups
+        XCTAssertNil(storage.store)
+    }
+
+    func testArchiveGroupsSavesTasksToStorage() {
+        let storage = InMemoryStorage()
+        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self,
+                                                                HouseHarkonnen.taskType: HouseHarkonnen.self ]
+        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+
+        pelican.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: .distantPast))
+        pelican.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
+
+        pelican.archiveGroups()
+
+        // This should be set to 1 because both tasks are a part of the "Dune Character Group"
+        XCTAssertEqual(storage.store?.count, 1)
+        if let duneCharacterGroup = storage.store?["Dune Character Group"] {
+            guard duneCharacterGroup.count == 2 else {
+                XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
+                return
+            }
+
+            if let taskOne = duneCharacterGroup[0]["task"] as? [String: Any] {
+                XCTAssertEqual(taskOne["name"] as? String, "Duke Leto")
+                XCTAssertEqual(taskOne["timeStamp"] as? Date, .distantPast)
+            } else {
+                XCTFail("Missing task dictionary for first task")
+            }
+
+            if let taskTwo = duneCharacterGroup[1]["task"] as? [String: Any] {
+                XCTAssertEqual(taskTwo["name"] as? String, "Glossu Rabban")
+                XCTAssertEqual(taskTwo["weapon"] as? String, "brutishness")
+            } else {
+                XCTFail("Missing task dictionary for second task")
+            }
+        } else {
+            XCTFail("Storage does not contain correct group")
+        }
+    }
+
+    func testUnarchiveGroupsLoadsNoTaskGroupsFromEmptyStorage() {
+        let storage = InMemoryStorage()
+        storage.store = [:]
+
+        let pelican = Pelican(typeToTask: [:], storage: storage)
+
+        pelican.unarchiveGroups()
+
+        XCTAssertTrue(pelican.containersByGroup.isEmpty)
+        // This should be nil, since we set storage to empty after unarchiving
+        XCTAssertNil(storage.store)
+    }
+
+    func testUnarchiveGroupsLoadsArchivedTasksFromStorage() {
+        let storage = InMemoryStorage()
+        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self ]
+
+        let serializedTask: [String: Any] = [ "id": "foo",
+                                              "task": [ "name": "Duke Leto", "timeStamp": Date.distantPast],
+                                              "taskType": HouseAtreides.taskType ]
+        storage.store = [ "Dune Character Group": [ serializedTask ] ]
+
+        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+
+        pelican.unarchiveGroups()
+
+        XCTAssertEqual(pelican.containersByGroup.count, 1)
+        if let duneCharacterGroup = pelican.containersByGroup["Dune Character Group"] {
+            guard duneCharacterGroup.count == 1 else {
+                XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
+                return
+            }
+
+            let taskContainer = duneCharacterGroup[0]
+            XCTAssertEqual(taskContainer.identifier, "foo")
+            XCTAssertEqual(taskContainer.containerDictionary["taskType"] as? String, HouseAtreides.taskType)
+            if let task = taskContainer.task as? HouseAtreides {
+                XCTAssertEqual(task.name, "Duke Leto")
+                XCTAssertEqual(task.timeStamp, Date.distantPast)
+            } else {
+                XCTFail("Task is not correct type (expected \(HouseAtreides.self), got \(type(of: taskContainer.task))")
+            }
+        } else {
+            XCTFail("Storage does not contain correct group")
+        }
+    }
 }
