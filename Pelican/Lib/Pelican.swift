@@ -269,7 +269,7 @@ extension Pelican {
             })
         }
 
-        return containersByGroup
+        return taskGroups
     }
 }
 
