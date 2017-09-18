@@ -206,4 +206,35 @@ class PelicanTests: XCTestCase {
         // This should be nil, since we shouldn't call overwriteGroups
         XCTAssertNil(storage.store)
     }
+
+    func testArchiveGroupsSavesTasksToStorage() {
+        let storage = InMemoryStorage()
+        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self,
+                                                                HouseHarkonnen.taskType: HouseHarkonnen.self ]
+        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+
+        pelican.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: .distantPast))
+        pelican.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
+
+        pelican.archiveGroups()
+
+        // This should be set to 1 because both tasks are a part of the "Dune Character Group"
+        XCTAssertEqual(storage.store?.count, 1)
+        if let duneCharacterGroup = storage.store?["Dune Character Group"] {
+            guard duneCharacterGroup.count == 2 else {
+                XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
+                return
+            }
+
+            let taskOne = duneCharacterGroup[0]["task"] as! [String: Any]
+            XCTAssertEqual(taskOne["name"] as? String, "Duke Leto")
+            XCTAssertEqual(taskOne["timeStamp"] as? Date, .distantPast)
+
+            let taskTwo = duneCharacterGroup[1]["task"] as! [String: Any]
+            XCTAssertEqual(taskTwo["name"] as? String, "Glossu Rabban")
+            XCTAssertEqual(taskTwo["weapon"] as? String, "brutishness")
+        } else {
+            XCTFail("Storage does not contain correct group")
+        }
+    }
 }
