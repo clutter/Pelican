@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 Pelican is a persisted batching library useful for log rolling, event logging or doing other periodic background processing.
                        DESC
 
-  s.homepage         = 'https://github.com/litso/Pelican'
+  s.homepage         = 'https://github.com/clutter/Pelican'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'bd755bf4f7e672000cab58c4b721a8cdbe22a839' => 'robmanson@gmail.com' }
