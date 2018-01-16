@@ -274,8 +274,8 @@ extension Pelican {
     }
 }
 
-extension Pelican.TaskContainer: Equatable {}
-
-func == (lhs: Pelican.TaskContainer, rhs: Pelican.TaskContainer) -> Bool {
-    return lhs.identifier == rhs.identifier
+extension Pelican.TaskContainer: Equatable {
+    static func == (lhs: Pelican.TaskContainer, rhs: Pelican.TaskContainer) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
 }
