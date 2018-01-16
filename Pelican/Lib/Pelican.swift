@@ -89,10 +89,11 @@ public class Pelican {
 
     // MARK - Intialization
 
-    init(typeToTask: [String: PelicanBatchableTask.Type], storage: PelicanStorage) {
+    init(typeToTask: [String: PelicanBatchableTask.Type], storage: PelicanStorage, maxChunkSize: Int = 50) {
         self.typeToTask = typeToTask
         containersByGroup = [: ]
         self.storage = storage
+        self.maxChunkSize = maxChunkSize
 
         start()
 
@@ -123,6 +124,7 @@ public class Pelican {
     typealias GroupedTasks = [String: [TaskContainer]]
     var containersByGroup: GroupedTasks
     let storage: PelicanStorage
+    let maxChunkSize: Int
 
     var isRunning = false
     var activeGroup: (group: String, tasks: [TaskContainer])?
@@ -143,13 +145,12 @@ public class Pelican {
     @objc func timerFired() {
         guard isRunning, activeGroup == nil else { return }
 
-        // Chunk containers into 100 maximum per group
+        // Chunk containers into groups with a configurable maximum size
 
         typealias GroupsArray = [(String, [TaskContainer])]
-        let maxChunck = 100
         let containersAndGroups: GroupsArray = containersByGroup.flatMap { (pair: (group: String, containers: [Pelican.TaskContainer])) -> GroupsArray in
-            let chunks = stride(from: 0, to: pair.containers.count, by: maxChunck).map {
-                Array(pair.containers[$0..<min($0 + maxChunck, pair.containers.count)])
+            let chunks = stride(from: 0, to: pair.containers.count, by: maxChunkSize).map {
+                Array(pair.containers[$0..<min($0 + maxChunkSize, pair.containers.count)])
             }
             let pairedChunks: GroupsArray = chunks.map({ (pair.group, $0) })
             return pairedChunks
