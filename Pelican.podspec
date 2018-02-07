@@ -8,7 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Pelican'
-  s.version          = '0.1.4'
+  s.version          = '0.2.0'
+  s.swift_version    = '4.0'
   s.summary          = 'Batch processing library written in Swift'
 
 # This description is used to generate tags and improve search results.

@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Pelican
 
-Copyright (c) 2017 bd755bf4f7e672000cab58c4b721a8cdbe22a839 <robmanson@gmail.com>
+Copyright (c) 2017–2018 Clutter, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
