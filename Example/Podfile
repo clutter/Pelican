@@ -1,6 +1,6 @@
+platform :ios, '10.0'
 use_frameworks!
+
 target 'Pelican_Tests' do
   pod 'Pelican', :path => '../'
-  
-  
 end
