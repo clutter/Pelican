@@ -155,7 +155,7 @@ class PelicanTests: XCTestCase {
 
         XCTAssert(storage.store == nil)
         TaskCollector.shared.collected = []
-        XCTAssert(Pelican.shared.containersByGroup.keys.count == 0)
+        XCTAssertTrue(Pelican.shared.groupedTasks.allTasks().isEmpty)
 
         // Add two more tasks and simulate backgrounding
         Pelican.shared.gulp(task: HouseAtreides(name: "Paul Atreides", birthdate: paulsDate))
@@ -252,7 +252,7 @@ class PelicanTests: XCTestCase {
 
         pelican.unarchiveGroups()
 
-        XCTAssertTrue(pelican.containersByGroup.isEmpty)
+        XCTAssertTrue(pelican.groupedTasks.allTasks().isEmpty)
         // This should be nil, since we set storage to empty after unarchiving
         XCTAssertNil(storage.store)
     }
@@ -270,8 +270,9 @@ class PelicanTests: XCTestCase {
 
         pelican.unarchiveGroups()
 
-        XCTAssertEqual(pelican.containersByGroup.count, 1)
-        if let duneCharacterGroup = pelican.containersByGroup["Dune Character Group"] {
+        let allGroups = Dictionary(uniqueKeysWithValues: pelican.groupedTasks.allTasks())
+        XCTAssertEqual(allGroups.count, 1)
+        if let duneCharacterGroup = allGroups["Dune Character Group"] {
             guard duneCharacterGroup.count == 1 else {
                 XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
                 return

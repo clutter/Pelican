@@ -14,6 +14,7 @@
 		3E6B5E9F0B38E0EBC3BDBA2F9B3DCEE2 /* StorablePelicanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62C7C11876856657FCFFE5F4D8D033D /* StorablePelicanTask.swift */; };
 		5FDEDE4F8863F2724C6FC7FEE54D9F1B /* Pelican-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C97DB8B473A6DAD6FAB3B7316031BB25 /* Pelican-dummy.m */; };
 		7D032298B75C12CB3F7F7C6C773E036E /* PelicanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED98018A38BA44B7BD9E846658BDD8EB /* PelicanStorage.swift */; };
+		BBA8C8D521069BD800540AA8 /* GroupedTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA8C8D421069BD800540AA8 /* GroupedTasks.swift */; };
 		C9A0E99101CA70291ABB93C7064C3CC8 /* PelicanUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0D3BDD48E56860799071B08532BDA8 /* PelicanUserDefaultsStorage.swift */; };
 		D832639DA430928516F0EC84219FF867 /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D3C93A18639F9940FC09D3D6C60B66 /* Pelican.swift */; };
 		E820C1549866009B9ED8F08D71B4DC4F /* Pelican-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 98B5CFDEC2230754B1E45694AC2D041C /* Pelican-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +47,7 @@
 		92A7BA74BF7CA28F32F68CB8CEFD3D42 /* Pods-Pelican_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pelican_Tests-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		98B5CFDEC2230754B1E45694AC2D041C /* Pelican-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-umbrella.h"; sourceTree = "<group>"; };
+		BBA8C8D421069BD800540AA8 /* GroupedTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GroupedTasks.swift; path = Pelican/Lib/GroupedTasks.swift; sourceTree = "<group>"; };
 		C97DB8B473A6DAD6FAB3B7316031BB25 /* Pelican-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pelican-dummy.m"; sourceTree = "<group>"; };
 		CFE4467604881B562C155DC652804E16 /* Pods-Pelican_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pelican_Tests-umbrella.h"; sourceTree = "<group>"; };
 		D62C7C11876856657FCFFE5F4D8D033D /* StorablePelicanTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorablePelicanTask.swift; path = Pelican/Lib/StorablePelicanTask.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		C459C352B72E83F3B825D4E39A491EB0 /* Pelican */ = {
 			isa = PBXGroup;
 			children = (
+				BBA8C8D421069BD800540AA8 /* GroupedTasks.swift */,
 				89D3C93A18639F9940FC09D3D6C60B66 /* Pelican.swift */,
 				ED98018A38BA44B7BD9E846658BDD8EB /* PelicanStorage.swift */,
 				0E0D3BDD48E56860799071B08532BDA8 /* PelicanUserDefaultsStorage.swift */,
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FDEDE4F8863F2724C6FC7FEE54D9F1B /* Pelican-dummy.m in Sources */,
+				BBA8C8D521069BD800540AA8 /* GroupedTasks.swift in Sources */,
 				D832639DA430928516F0EC84219FF867 /* Pelican.swift in Sources */,
 				7D032298B75C12CB3F7F7C6C773E036E /* PelicanStorage.swift in Sources */,
 				C9A0E99101CA70291ABB93C7064C3CC8 /* PelicanUserDefaultsStorage.swift in Sources */,
