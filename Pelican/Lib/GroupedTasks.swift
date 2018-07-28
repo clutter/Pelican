@@ -54,6 +54,12 @@ final class GroupedTasks {
         }
     }
 
+    func removeAllTasks() {
+        queue.sync {
+            containersByGroup.removeAll()
+        }
+    }
+
     // MARK: Accessing
 
     typealias GroupAndContainers = (String, [Pelican.TaskContainer])

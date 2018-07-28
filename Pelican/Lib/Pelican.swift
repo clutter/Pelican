@@ -202,6 +202,7 @@ extension Pelican {
         timer = nil
 
         archiveGroups()
+        groupedTasks.removeAllTasks()
     }
 
     // MARK: - Serialization Helpers

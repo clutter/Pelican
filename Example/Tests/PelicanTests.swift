@@ -137,6 +137,7 @@ class PelicanTests: XCTestCase {
         // Start by registering and immediately adding 2 tasks
         TaskCollector.shared.collected = []
         Pelican.register(tasks: [HouseAtreides.self, HouseHarkonnen.self], storage: storage)
+        defer { Pelican.shared.stop() }
         Pelican.shared.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: letosDate))
         Pelican.shared.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
 
@@ -200,6 +201,7 @@ class PelicanTests: XCTestCase {
         // This is done to test that we are calling deleteAll (which sets the storage to nil) properly
         storage.store = [:]
         let pelican = Pelican(typeToTask: [:], storage: storage)
+        defer { pelican.stop() }
 
         pelican.archiveGroups()
 
@@ -212,6 +214,7 @@ class PelicanTests: XCTestCase {
         let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self,
                                                                 HouseHarkonnen.taskType: HouseHarkonnen.self ]
         let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+        defer { pelican.stop() }
 
         pelican.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: .distantPast))
         pelican.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
@@ -249,6 +252,7 @@ class PelicanTests: XCTestCase {
         storage.store = [:]
 
         let pelican = Pelican(typeToTask: [:], storage: storage)
+        defer { pelican.stop() }
 
         pelican.unarchiveGroups()
 
@@ -267,6 +271,7 @@ class PelicanTests: XCTestCase {
         storage.store = [ "Dune Character Group": [ serializedTask ] ]
 
         let pelican = Pelican(typeToTask: typeToTask, storage: storage)
+        defer { pelican.stop() }
 
         pelican.unarchiveGroups()
 
