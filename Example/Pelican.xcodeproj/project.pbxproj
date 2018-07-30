@@ -14,6 +14,7 @@
 		AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA4918C1E95B199006602C0 /* PelicanTests.swift */; };
 		AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */; };
 		AFE84B9A1E945D4300BFFA27 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */; };
+		BB4727C82108E62D00801251 /* GroupedTasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4727C72108E62D00801251 /* GroupedTasksTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		AFA4918C1E95B199006602C0 /* PelicanTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanTests.swift; sourceTree = "<group>"; };
 		AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PelicanExampleTests.swift; sourceTree = "<group>"; };
 		AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
+		BB4727C72108E62D00801251 /* GroupedTasksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedTasksTests.swift; sourceTree = "<group>"; };
 		E330028AAF792D4EFFC814A9 /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelican_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -67,6 +69,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				BB4727C72108E62D00801251 /* GroupedTasksTests.swift */,
 				AFE84B991E945D4300BFFA27 /* InMemoryStorage.swift */,
 				AFE84B971E92FA7B00BFFA27 /* PelicanExampleTests.swift */,
 				AFA4918C1E95B199006602C0 /* PelicanTests.swift */,
@@ -125,7 +128,6 @@
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
 				19A215116755D2B636E947BE /* [CP] Embed Pods Frameworks */,
-				B9FF3C119588C9BC493C6D60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,7 +145,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACE41AFB9204008FA782 = {
@@ -219,21 +221,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9FF3C119588C9BC493C6D60 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -245,6 +232,7 @@
 				AFA4918D1E95B199006602C0 /* PelicanTests.swift in Sources */,
 				AFE84B9A1E945D4300BFFA27 /* InMemoryStorage.swift in Sources */,
 				AF54286C1EAFE75C003F1256 /* RetryTaskTests.swift in Sources */,
+				BB4727C82108E62D00801251 /* GroupedTasksTests.swift in Sources */,
 				AFE84B981E92FA7B00BFFA27 /* PelicanExampleTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* UserDefaultsStorageTests.swift in Sources */,
 			);
@@ -265,12 +253,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -318,12 +308,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

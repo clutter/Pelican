@@ -47,13 +47,8 @@ public class Pelican {
     }
 
     public func gulp(task: PelicanBatchableTask) {
-        let container = TaskContainer(task: task)
-
-        if containersByGroup[task.group] != nil {
-            containersByGroup[task.group]?.append(container)
-        } else {
-            containersByGroup[task.group] = [container]
-        }
+        let container = Pelican.TaskContainer(task: task)
+        groupedTasks.insert(container, forGroup: task.group)
     }
 
     class TaskContainer {
@@ -91,7 +86,7 @@ public class Pelican {
 
     init(typeToTask: [String: PelicanBatchableTask.Type], storage: PelicanStorage, maxChunkSize: Int = 50) {
         self.typeToTask = typeToTask
-        containersByGroup = [: ]
+        groupedTasks = GroupedTasks()
         self.storage = storage
         self.maxChunkSize = maxChunkSize
 
@@ -121,8 +116,7 @@ public class Pelican {
 
     let typeToTask: [String: PelicanBatchableTask.Type]
 
-    typealias GroupedTasks = [String: [TaskContainer]]
-    var containersByGroup: GroupedTasks
+    var groupedTasks: GroupedTasks
     let storage: PelicanStorage
     let maxChunkSize: Int
 
@@ -145,21 +139,15 @@ public class Pelican {
     @objc func timerFired() {
         guard isRunning, activeGroup == nil else { return }
 
-        // Chunk containers into groups with a configurable maximum size
-
-        typealias GroupsArray = [(String, [TaskContainer])]
-        let containersAndGroups: GroupsArray = containersByGroup.flatMap { (pair: (group: String, containers: [Pelican.TaskContainer])) -> GroupsArray in
-            let chunks = stride(from: 0, to: pair.containers.count, by: maxChunkSize).map {
-                Array(pair.containers[$0..<min($0 + maxChunkSize, pair.containers.count)])
-            }
-            let pairedChunks: GroupsArray = chunks.map({ (pair.group, $0) })
-            return pairedChunks
-        }
+        let chunkedTasks = self.groupedTasks.chunkedTasks(by: self.maxChunkSize)
 
         DispatchQueue.global(qos: .userInitiated).async {
-            for (group, containers) in containersAndGroups {
+            for (group, containers) in chunkedTasks {
                 self.activeGroup = (group, containers)
-                guard let firstContainer = containers.first else { self.containersByGroup.removeValue(forKey: group); continue }
+                guard let firstContainer = containers.first else {
+                    self.groupedTasks.removeAllTasks(forGroup: group)
+                    continue
+                }
                 guard let taskType = self.typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
 
                 var retry = true
@@ -171,15 +159,7 @@ public class Pelican {
                         taskType.processGroup(tasks: tasks, didComplete: { (result) in
                             switch result {
                             case .done:
-                                let filtered = self.containersByGroup[group]?.filter { elem in
-                                    return !containers.contains(where: { elem == $0 })
-                                    } ?? []
-                                if filtered.count > 0 {
-                                    self.containersByGroup[group] = filtered
-                                } else {
-                                    self.containersByGroup.removeValue(forKey: group)
-                                }
-
+                                self.groupedTasks.remove(containers, forGroup: group)
                                 retry = false
                                 self.activeGroup = nil
                             case .retry(let delay):
@@ -222,35 +202,32 @@ extension Pelican {
         timer = nil
 
         archiveGroups()
+        groupedTasks.removeAllTasks()
     }
 
     // MARK: - Serialization Helpers
 
     func unarchiveGroups() {
-        let serializedGroups = storage.loadTaskGroups() ?? [: ]
-        for (groupKey, values) in fromDictionary(serialized: serializedGroups) {
-            if containersByGroup[groupKey] != nil {
-                // Handle case where containersByGroup didn't go out of memory, so we don't want to insert duplicates
-                let existingValues = containersByGroup[groupKey] ?? []
-                let uniqueValues = values.filter({ val in return !existingValues.contains(where: { val == $0 }) })
-                containersByGroup[groupKey]?.append(contentsOf: uniqueValues)
-            } else {
-                containersByGroup[groupKey] = values
-            }
-        }
+        let serializedGroups = storage.loadTaskGroups() ?? [:]
+        let taskGroups = fromDictionary(serialized: serializedGroups)
+
+        groupedTasks.merge(taskGroups)
+
         storage.deleteAll()
     }
 
     func archiveGroups() {
-        if containersByGroup.count > 0 {
-            storage.overwrite(taskGroups: toDictionary(taskGroups: containersByGroup))
-        } else {
+        let taskGroups = toDictionary(taskGroups: groupedTasks.allTasks())
+
+        if taskGroups.isEmpty {
             storage.deleteAll()
+        } else {
+            storage.overwrite(taskGroups: taskGroups)
         }
     }
 
-    private func toDictionary(taskGroups: Pelican.GroupedTasks) -> PelicanStorage.Serialized {
-        var dict: PelicanStorage.Serialized = [: ]
+    private func toDictionary(taskGroups: [GroupedTasks.GroupAndContainers]) -> PelicanStorage.Serialized {
+        var dict: PelicanStorage.Serialized = [:]
         for (group, containers) in taskGroups {
             let serialized: [[String: Any]] = containers.map { $0.containerDictionary }
             dict[group] = serialized
@@ -258,16 +235,18 @@ extension Pelican {
         return dict
     }
 
-    private func fromDictionary(serialized: PelicanStorage.Serialized) -> Pelican.GroupedTasks {
-        var taskGroups: Pelican.GroupedTasks = [: ]
+    private func fromDictionary(serialized: PelicanStorage.Serialized) -> [GroupedTasks.GroupAndContainers] {
+        var taskGroups: [GroupedTasks.GroupAndContainers] = []
+
         for (group, array) in serialized {
-            taskGroups[group] = array.flatMap({ containerDict in
+            let containers: [TaskContainer] = array.compactMap { containerDict in
                 guard let container = TaskContainer(containerDictionary: containerDict, typeToTask: typeToTask) else {
                     /* TODO: Error handling */
                     return nil
                 }
                 return container
-            })
+            }
+            taskGroups.append((group, containers))
         }
 
         return taskGroups
