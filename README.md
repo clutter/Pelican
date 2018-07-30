@@ -1,9 +1,9 @@
 # Pelican
 
-[![CI Status](http://img.shields.io/travis/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican.svg?style=flat)](https://travis-ci.org/bd755bf4f7e672000cab58c4b721a8cdbe22a839/Pelican)
-[![Version](https://img.shields.io/cocoapods/v/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
-[![License](https://img.shields.io/cocoapods/l/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
-[![Platform](https://img.shields.io/cocoapods/p/Pelican.svg?style=flat)](http://cocoapods.org/pods/Pelican)
+![Build Status](https://img.shields.io/bitrise/d51fabc085778510/master.svg?token=g2yID499WygOMM7DxSKtQQ)
+[![Version](https://img.shields.io/cocoapods/v/Pelican.svg)](http://cocoapods.org/pods/Pelican)
+[![License](https://img.shields.io/cocoapods/l/Pelican.svg)](http://cocoapods.org/pods/Pelican)
+[![Platform](https://img.shields.io/cocoapods/p/Pelican.svg)](http://cocoapods.org/pods/Pelican)
 
 Pelican is a persisted batching library useful for log rolling, event logging or doing other periodic background processing.
 
