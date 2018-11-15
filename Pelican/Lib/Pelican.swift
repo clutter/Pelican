@@ -95,15 +95,15 @@ public class Pelican {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self,
                                        selector: #selector(didEnterBackground),
-                                       name: .UIApplicationDidEnterBackground,
+                                       name: UIApplication.didEnterBackgroundNotification,
                                        object: nil)
         notificationCenter.addObserver(self,
                                        selector: #selector(willTerminate),
-                                       name: .UIApplicationWillTerminate,
+                                       name: UIApplication.willTerminateNotification,
                                        object: nil)
         notificationCenter.addObserver(self,
                                        selector: #selector(willEnterForeground),
-                                       name: .UIApplicationWillEnterForeground,
+                                       name: UIApplication.willEnterForegroundNotification,
                                        object: nil)
     }
 
