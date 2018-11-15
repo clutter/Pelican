@@ -1,5 +1,5 @@
 PODS:
-  - Pelican (0.2.0)
+  - Pelican (0.4.0)
 
 DEPENDENCIES:
   - Pelican (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Pelican: 527e5e501b058a4217f556ea8143073d2989048e
+  Pelican: 55c9f933451b512d58bcbf81d9131b028b57baa0
 
 PODFILE CHECKSUM: 25aa66544e4552e11f1312d7460bb051d51fb4be
 
