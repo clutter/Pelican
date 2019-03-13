@@ -10,16 +10,16 @@ import Foundation
 import Pelican
 
 class InMemoryStorage: PelicanStorage {
-    var store: PelicanStorage.Serialized?
-    func loadTaskGroups() -> PelicanStorage.Serialized? {
+    var store: Data?
+    func pelicanLoadFromStorage() -> Data? {
         return store
     }
 
-    func deleteAll() {
+    func pelicanDeleteAll() {
         store = nil
     }
 
-    func overwrite(taskGroups: PelicanStorage.Serialized) {
-        store = taskGroups
+    func pelicanOverwriteStorage(with data: Data) {
+        store = data
     }
 }

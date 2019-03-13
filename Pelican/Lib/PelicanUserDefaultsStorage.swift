@@ -9,24 +9,17 @@
 import Foundation
 
 public class PelicanUserDefaultsStorage: PelicanStorage {
-    let tasksKey = "com.clutter.pelican"
-    public func overwrite(taskGroups: PelicanStorage.Serialized) {
-        guard taskGroups.count > 0 else {
-            UserDefaults.standard.removeObject(forKey: tasksKey)
-            return
-        }
-
-        let data = NSKeyedArchiver.archivedData(withRootObject: taskGroups)
+    let tasksKey = "com.clutter.pelican.codable-tasks"
+    public func pelicanOverwriteStorage(with data: Data) {
         UserDefaults.standard.set(data, forKey: tasksKey)
     }
 
-    public func deleteAll() {
+    public func pelicanDeleteAll() {
         UserDefaults.standard.removeObject(forKey: tasksKey)
     }
 
-    public func loadTaskGroups() -> PelicanStorage.Serialized? {
-        guard let data = UserDefaults.standard.data(forKey: tasksKey) else { return nil }
-        return NSKeyedUnarchiver.unarchiveObject(with: data) as? PelicanStorage.Serialized
+    public func pelicanLoadFromStorage() -> Data? {
+        return UserDefaults.standard.data(forKey: tasksKey)
     }
 
     public init() {  }

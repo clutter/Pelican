@@ -8,7 +8,7 @@
 import Foundation
 
 final class GroupedTasks {
-    private var containersByGroup: [String: [Pelican.TaskContainer]]
+    private var containersByGroup: [String: [TaskContainer]]
 
     private let queue = DispatchQueue(label: "com.clutter.Pelican.GroupedTask.queue", qos: .utility)
 
@@ -18,7 +18,7 @@ final class GroupedTasks {
 
     // MARK: Inserting
 
-    func insert(_ task: Pelican.TaskContainer, forGroup group: String) {
+    func insert(_ task: TaskContainer, forGroup group: String) {
         queue.async {
             self.containersByGroup[group, default: []].append(task)
         }
@@ -26,17 +26,17 @@ final class GroupedTasks {
 
     func merge(_ taskGroups: [GroupAndContainers]) {
         queue.sync {
-            for (group, tasks) in taskGroups {
-                let existingTasks = containersByGroup[group] ?? []
-                let uniqueTasks = tasks.filter({ !existingTasks.contains($0) })
-                containersByGroup[group, default: []].append(contentsOf: uniqueTasks)
+            for taskGroup in taskGroups {
+                let existingTasks = containersByGroup[taskGroup.group] ?? []
+                let uniqueTasks = taskGroup.containers.filter({ !existingTasks.contains($0) })
+                containersByGroup[taskGroup.group, default: []].append(contentsOf: uniqueTasks)
             }
         }
     }
 
     // MARK: Removing
 
-    func remove(_ tasks: [Pelican.TaskContainer], forGroup group: String) {
+    func remove(_ tasks: [TaskContainer], forGroup group: String) {
         queue.sync {
             let filteredTasks = self.containersByGroup[group, default: []].filter { !tasks.contains($0) }
 
@@ -62,17 +62,20 @@ final class GroupedTasks {
 
     // MARK: Accessing
 
-    typealias GroupAndContainers = (String, [Pelican.TaskContainer])
+    struct GroupAndContainers: Codable {
+        let group: String
+        let containers: [TaskContainer]
+    }
 
     func allTasks() -> [GroupAndContainers] {
         return queue.sync {
-            return Array(containersByGroup)
+            return containersByGroup.map(GroupAndContainers.init)
         }
     }
 
     func chunkedTasks(by chunkSize: Int) -> [GroupAndContainers] {
         return queue.sync {
-            return containersByGroup.chunked(by: chunkSize)
+            return containersByGroup.chunked(by: chunkSize).map(GroupAndContainers.init)
         }
     }
 }
