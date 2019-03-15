@@ -20,14 +20,14 @@ final class GroupedTasksTests: XCTestCase {
         groupedTasks = GroupedTasks()
         queue = DispatchQueue(label: "com.clutter.Pelican.GroupedTaskTests.queue", attributes: .concurrent)
     }
-    
+
     override func tearDown() {
         queue = nil
         groupedTasks = nil
 
         super.tearDown()
     }
-    
+
     func testInsertingConcurrently() {
         let expectation = self.expectation(description: "GroupedTasks should allow inserting tasks concurrently")
         expectation.expectedFulfillmentCount = iterationCount
@@ -60,7 +60,9 @@ final class GroupedTasksTests: XCTestCase {
         let allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
         let taskGroup = allTasks[0]
-        XCTAssertEqual(taskGroup.containers.count, 3, "GroupedTask should allow inserting duplicates of the same task container")
+        XCTAssertEqual(taskGroup.containers.count,
+                       3,
+                       "GroupedTask should allow inserting duplicates of the same task container")
     }
 
     func testMergingConcurrently() {

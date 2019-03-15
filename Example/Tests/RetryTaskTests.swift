@@ -9,7 +9,7 @@
 import XCTest
 @testable import Pelican
 
-fileprivate class TaskCollector {
+private class TaskCollector {
     static var shared = TaskCollector()
     var collected = [RetryTask]()
 
@@ -46,7 +46,7 @@ extension RetryGroup where Self: PelicanBatchableTask {
     }
 }
 
-fileprivate struct RetryTask: PelicanBatchableTask, RetryGroup {
+private struct RetryTask: PelicanBatchableTask, RetryGroup {
     let name: String
 
     init(name: String) {

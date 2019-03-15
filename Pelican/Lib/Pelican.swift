@@ -120,7 +120,10 @@ public class Pelican {
                     self.groupedTasks.removeAllTasks(forGroup: taskGroup.group)
                     continue
                 }
-                guard let taskType = self.typeToTask[firstContainer.task.taskType] else { /* TODO: Error handling */ continue }
+                guard let taskType = self.typeToTask[firstContainer.task.taskType] else {
+                    /* TODO: Error handling */
+                    continue
+                }
 
                 var retry = true
                 var retryDelay: TimeInterval = 0

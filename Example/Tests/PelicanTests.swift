@@ -9,7 +9,7 @@
 import XCTest
 @testable import Pelican
 
-fileprivate class TaskCollector {
+private class TaskCollector {
     enum Task {
         case taskA(value: HouseAtreides)
         case taskB(value: HouseHarkonnen)
@@ -53,7 +53,7 @@ fileprivate class TaskCollector {
     }
 }
 
-fileprivate protocol DuneCharacter: PelicanGroupable {
+private protocol DuneCharacter: PelicanGroupable {
     var name: String { get }
 }
 
@@ -68,7 +68,7 @@ extension DuneCharacter where Self: PelicanBatchableTask {
     }
 }
 
-fileprivate struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
+private struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
     let name: String
     let timeStamp: Date
 
@@ -81,7 +81,7 @@ fileprivate struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
     static let taskType: String = String(describing: HouseAtreides.self)
 }
 
-fileprivate struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
+private struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
     let name: String
     let weapon: String
 
