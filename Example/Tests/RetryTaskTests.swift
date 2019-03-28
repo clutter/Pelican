@@ -9,7 +9,7 @@
 import XCTest
 @testable import Pelican
 
-fileprivate class TaskCollector {
+private class TaskCollector {
     static var shared = TaskCollector()
     var collected = [RetryTask]()
 
@@ -46,7 +46,7 @@ extension RetryGroup where Self: PelicanBatchableTask {
     }
 }
 
-fileprivate struct RetryTask: PelicanBatchableTask, RetryGroup {
+private struct RetryTask: PelicanBatchableTask, RetryGroup {
     let name: String
 
     init(name: String) {
@@ -55,29 +55,26 @@ fileprivate struct RetryTask: PelicanBatchableTask, RetryGroup {
 
     // PelicanBatchableTask conformance, used to read and store task to storage
     static let taskType: String = String(describing: RetryTask.self)
-
-    init?(dictionary: [String : Any]) {
-        guard let name = dictionary["name"] as? String else {
-            fatalError()
-        }
-        self.name = name
-    }
-
-    var dictionary: [String : Any] {
-        return [
-            "name": name
-        ]
-    }
 }
 
 class RetryTaskTests: XCTestCase {
-
-    /// Test retrying behavior to make sure tasks are properly retried after processGroup signals that is correct behavior
-    func testRetryBehavior() {
-        let storage = InMemoryStorage()
+    override func setUp() {
+        var tasks = Pelican.RegisteredTasks()
+        tasks.register(for: RetryTask.self)
 
         TaskCollector.shared.collected = []
-        Pelican.register(tasks: [RetryTask.self], storage: storage)
+
+        let storage = InMemoryStorage()
+        Pelican.initialize(tasks: tasks, storage: storage)
+    }
+
+    override func tearDown() {
+        Pelican.shared.stop()
+    }
+
+    // Test retrying behavior to make sure tasks are properly retried after processGroup signals that is correct
+    // behavior
+    func testRetryBehavior() {
         Pelican.shared.gulp(task: RetryTask(name: "Task A"))
         Pelican.shared.gulp(task: RetryTask(name: "Task B"))
 

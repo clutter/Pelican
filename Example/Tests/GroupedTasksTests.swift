@@ -20,14 +20,14 @@ final class GroupedTasksTests: XCTestCase {
         groupedTasks = GroupedTasks()
         queue = DispatchQueue(label: "com.clutter.Pelican.GroupedTaskTests.queue", attributes: .concurrent)
     }
-    
+
     override func tearDown() {
         queue = nil
         groupedTasks = nil
 
         super.tearDown()
     }
-    
+
     func testInsertingConcurrently() {
         let expectation = self.expectation(description: "GroupedTasks should allow inserting tasks concurrently")
         expectation.expectedFulfillmentCount = iterationCount
@@ -35,7 +35,7 @@ final class GroupedTasksTests: XCTestCase {
         for _ in 1...iterationCount {
             queue.async {
                 let task = DummyTask()
-                let container = Pelican.TaskContainer(task: task)
+                let container = TaskContainer(task: task)
                 self.groupedTasks.insert(container, forGroup: task.group)
                 expectation.fulfill()
             }
@@ -45,13 +45,13 @@ final class GroupedTasksTests: XCTestCase {
 
         let allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        let (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, iterationCount, "GroupedTasks should allow all tasks to be inserted")
+        let taskGroup = allTasks[0]
+        XCTAssertEqual(taskGroup.containers.count, iterationCount, "GroupedTasks should allow all tasks to be inserted")
     }
 
     func testInsertingDuplicates() {
         let task = DummyTask()
-        let container = Pelican.TaskContainer(task: task)
+        let container = TaskContainer(task: task)
 
         groupedTasks.insert(container, forGroup: task.group)
         groupedTasks.insert(container, forGroup: task.group)
@@ -59,8 +59,10 @@ final class GroupedTasksTests: XCTestCase {
 
         let allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        let (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, 3, "GroupedTask should allow inserting duplicates of the same task container")
+        let taskGroup = allTasks[0]
+        XCTAssertEqual(taskGroup.containers.count,
+                       3,
+                       "GroupedTask should allow inserting duplicates of the same task container")
     }
 
     func testMergingConcurrently() {
@@ -68,8 +70,8 @@ final class GroupedTasksTests: XCTestCase {
 
         let taskGroups: [GroupedTasks.GroupAndContainers] = (1...iterationCount).map { _ in
             let task = DummyTask()
-            let container = Pelican.TaskContainer(task: task)
-            return (task.group, [container])
+            let container = TaskContainer(task: task)
+            return GroupedTasks.GroupAndContainers(group: task.group, containers: [container])
         }
 
         let expectation = self.expectation(description: "GroupedTasks should allow merging tasks concurrently")
@@ -86,51 +88,51 @@ final class GroupedTasksTests: XCTestCase {
     }
 
     func testMergingDuplicates() {
-        let someContainers: [Pelican.TaskContainer] = (1...2).map { _ in
+        let someContainers: [TaskContainer] = (1...2).map { _ in
             let task = DummyTask()
-            return Pelican.TaskContainer(task: task)
+            return TaskContainer(task: task)
         }
         let groupName = someContainers[0].task.group
-        let someGroups = [(groupName, someContainers)]
+        let someGroups = [GroupedTasks.GroupAndContainers(group: groupName, containers: someContainers)]
 
         groupedTasks.merge(someGroups)
 
         var allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        var (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, 2, "GroupedTask should allow merging tasks")
+        let taskGroup = allTasks[0]
+        XCTAssertEqual(taskGroup.containers.count, 2, "GroupedTask should allow merging tasks")
 
         groupedTasks.merge(someGroups) // again
 
         allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, 2, "GroupedTask should not merge duplicate tasks")
+        let taskGroup2 = allTasks[0]
+        XCTAssertEqual(taskGroup2.containers.count, 2, "GroupedTask should not merge duplicate tasks")
 
-        let otherContainers: [Pelican.TaskContainer] = (1...2).map { _ in
+        let otherContainers: [TaskContainer] = (1...2).map { _ in
             let task = DummyTask()
-            return Pelican.TaskContainer(task: task)
+            return TaskContainer(task: task)
         }
-        let otherGroups = [(groupName, otherContainers)]
+        let otherGroups = [GroupedTasks.GroupAndContainers(group: groupName, containers: otherContainers)]
 
         groupedTasks.merge(otherGroups)
 
         allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, 4, "GroupedTask should merge unique tasks")
+        let taskGroup3 = allTasks[0]
+        XCTAssertEqual(taskGroup3.containers.count, 4, "GroupedTask should merge unique tasks")
 
     }
 
     func testRemovingConcurrently() {
         testInsertingConcurrently()
         let allTasks = groupedTasks.allTasks()
-        let (_, containers) = allTasks[0]
+        let taskGroup = allTasks[0]
 
         let expectation = self.expectation(description: "GroupedTasks should allow removing tasks concurrently")
         expectation.expectedFulfillmentCount = iterationCount
 
-        for container in containers {
+        for container in taskGroup.containers {
             queue.async {
                 self.groupedTasks.remove([container], forGroup: container.task.group)
                 expectation.fulfill()
@@ -141,19 +143,19 @@ final class GroupedTasksTests: XCTestCase {
     }
 
     func testRemovingAllTasks() {
-        let someContainers: [Pelican.TaskContainer] = (1...2).map { _ in
+        let someContainers: [TaskContainer] = (1...2).map { _ in
             let task = DummyTask()
-            return Pelican.TaskContainer(task: task)
+            return TaskContainer(task: task)
         }
         let groupName = someContainers[0].task.group
-        let someGroups = [(groupName, someContainers)]
+        let someGroups = [GroupedTasks.GroupAndContainers(group: groupName, containers: someContainers)]
 
         groupedTasks.merge(someGroups)
 
         var allTasks = groupedTasks.allTasks()
         XCTAssertEqual(allTasks.count, 1)
-        let (_, containers) = allTasks[0]
-        XCTAssertEqual(containers.count, 2, "GroupedTask should allow merging tasks")
+        let taskGroup = allTasks[0]
+        XCTAssertEqual(taskGroup.containers.count, 2, "GroupedTask should allow merging tasks")
 
         groupedTasks.removeAllTasks(forGroup: groupName)
 
@@ -162,28 +164,28 @@ final class GroupedTasksTests: XCTestCase {
     }
 
     func testChunkingTasks() {
-        let someContainers: [Pelican.TaskContainer] = (1...10).map { _ in
+        let someContainers: [TaskContainer] = (1...10).map { _ in
             let task = DummyTask()
-            return Pelican.TaskContainer(task: task)
+            return TaskContainer(task: task)
         }
         let groupName = someContainers[0].task.group
-        let someGroups = [(groupName, someContainers)]
+        let someGroups = [GroupedTasks.GroupAndContainers(group: groupName, containers: someContainers)]
 
         groupedTasks.merge(someGroups)
 
         let chunkedTasks = groupedTasks.chunkedTasks(by: 4)
         XCTAssertEqual(chunkedTasks.count, 3)
 
-        let (groupName0, containers0) = chunkedTasks[0]
-        XCTAssertEqual(containers0.count, 4, "The first chunk should have 4 task containers")
+        let taskGroup0 = chunkedTasks[0]
+        XCTAssertEqual(taskGroup0.containers.count, 4, "The first chunk should have 4 task containers")
 
-        let (groupName1, containers1) = chunkedTasks[1]
-        XCTAssertEqual(containers1.count, 4, "The second chunk should have 4 task containers")
-        XCTAssertEqual(groupName1, groupName0)
+        let taskGroup1 = chunkedTasks[1]
+        XCTAssertEqual(taskGroup1.containers.count, 4, "The second chunk should have 4 task containers")
+        XCTAssertEqual(taskGroup0.group, taskGroup1.group)
 
-        let (groupName2, containers2) = chunkedTasks[2]
-        XCTAssertEqual(containers2.count, 2, "The third chunk should have 2 task containers")
-        XCTAssertEqual(groupName2, groupName0)
+        let taskGroup2 = chunkedTasks[2]
+        XCTAssertEqual(taskGroup2.containers.count, 2, "The third chunk should have 2 task containers")
+        XCTAssertEqual(taskGroup0.group, taskGroup2.group)
     }
 }
 
@@ -195,7 +197,4 @@ private struct DummyTask: PelicanGroupable, PelicanBatchableTask {
     static func processGroup(tasks: [PelicanBatchableTask], didComplete: @escaping ((PelicanProcessResult) -> Void)) {}
 
     static var taskType: String { return String(describing: DummyTask.self) }
-
-    init?(dictionary: [String: Any]) {}
-    var dictionary: [String: Any] { return [:] }
 }

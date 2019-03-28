@@ -16,6 +16,7 @@
 		95FB10B00EBD7232EB1CEBF175CFC8E6 /* PelicanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB77F3BBF22321BECDD1AECAC8281F4 /* PelicanStorage.swift */; };
 		9D01A2C8A536FB1C6387063D70899D9D /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA504DCBAD62DB3FDA146A84283A449B /* Pelican.swift */; };
 		AAD1C9D4960F10127CBE23791515BADD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		AF59818D223B19B2003D1648 /* TaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59818C223B19B2003D1648 /* TaskContainer.swift */; };
 		BFA9656243ABCCF3E3E7963B2709EFAF /* StorablePelicanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */; };
 		E041732AFCFFCA64B27CA4AA0EEA8A1C /* PelicanUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD38F0154156D979824124EEE997040 /* PelicanUserDefaultsStorage.swift */; };
 /* End PBXBuildFile section */
@@ -36,19 +37,20 @@
 		2F8A0805F0B22EF923D90573D6C54324 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		409B25B8329EF26B6BF27996000F76DD /* Pelican-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-prefix.pch"; sourceTree = "<group>"; };
 		4BD9FAB23F2582E31EFED302ABBE75FA /* Pelican.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pelican.xcconfig; sourceTree = "<group>"; };
-		4ECB75449C1693651302E50B2E8A6E71 /* Pelican.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pelican.framework; path = Pelican.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4ECB75449C1693651302E50B2E8A6E71 /* Pelican.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pelican.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		5AB71903B78C8AACD5F2C6FF40964BB4 /* GroupedTasks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupedTasks.swift; path = Pelican/Lib/GroupedTasks.swift; sourceTree = "<group>"; };
 		5FB77F3BBF22321BECDD1AECAC8281F4 /* PelicanStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanStorage.swift; path = Pelican/Lib/PelicanStorage.swift; sourceTree = "<group>"; };
-		65B4B90C6B16CE94DB3C7A12EBA629D8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		65B4B90C6B16CE94DB3C7A12EBA629D8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		723C53DC2D393BF2CEBCC2F7851CA95F /* Pods-Pelican_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorablePelicanTask.swift; path = Pelican/Lib/StorablePelicanTask.swift; sourceTree = "<group>"; };
 		82F0A175B3CF4045252783687C361DE4 /* Pods-Pelican_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B14AD51D284EA7DB01598B12D88F560 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92A7BA74BF7CA28F32F68CB8CEFD3D42 /* Pods-Pelican_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pelican_Tests-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A180FC78F9CD221E711848516AEC6FC0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		C7B60F4995E16D9B6704907A39B089CD /* Pelican.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = Pelican.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A180FC78F9CD221E711848516AEC6FC0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		AF59818C223B19B2003D1648 /* TaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskContainer.swift; path = Pelican/Lib/TaskContainer.swift; sourceTree = "<group>"; };
+		C7B60F4995E16D9B6704907A39B089CD /* Pelican.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Pelican.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CAD38F0154156D979824124EEE997040 /* PelicanUserDefaultsStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanUserDefaultsStorage.swift; path = Pelican/Lib/PelicanUserDefaultsStorage.swift; sourceTree = "<group>"; };
 		CFE4467604881B562C155DC652804E16 /* Pods-Pelican_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pelican_Tests-umbrella.h"; sourceTree = "<group>"; };
 		DA7DDD4F28BD08245304AA5A043A5D97 /* Pods-Pelican_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pelican_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		F5A3F31FF86BDA12B88363D7FF82E7E9 /* Pelican-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-umbrella.h"; sourceTree = "<group>"; };
 		FA504DCBAD62DB3FDA146A84283A449B /* Pelican.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pelican.swift; path = Pelican/Lib/Pelican.swift; sourceTree = "<group>"; };
 		FBC04D7C106F6967DC92E3163D444A97 /* Pods-Pelican_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pelican_Tests.modulemap"; sourceTree = "<group>"; };
-		FC7D61CEF482B5E24154BC0248AF26DB /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pelican_Tests.framework; path = "Pods-Pelican_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC7D61CEF482B5E24154BC0248AF26DB /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelican_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */,
 				478CCD2F189BA2E91802507EBF8006A8 /* Pod */,
 				C1F6F587C146ACE627FE7DFA8FBF93C0 /* Support Files */,
+				AF59818C223B19B2003D1648 /* TaskContainer.swift */,
 			);
 			name = Pelican;
 			path = ../..;
@@ -284,6 +287,7 @@
 				9D01A2C8A536FB1C6387063D70899D9D /* Pelican.swift in Sources */,
 				95FB10B00EBD7232EB1CEBF175CFC8E6 /* PelicanStorage.swift in Sources */,
 				E041732AFCFFCA64B27CA4AA0EEA8A1C /* PelicanUserDefaultsStorage.swift in Sources */,
+				AF59818D223B19B2003D1648 /* TaskContainer.swift in Sources */,
 				BFA9656243ABCCF3E3E7963B2709EFAF /* StorablePelicanTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

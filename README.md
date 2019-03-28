@@ -25,11 +25,11 @@ extension AppEvents {
     }
 
     /// Pelican will call `processGroup` on a background thread. You should implement it to do whatever processing is 
-    /// relevant to your application. Below is a sample implementation that sends application events to as a batch.
+    /// relevant to your application. Below is a sample implementation that sends application events as a batch.
     static func processGroup(tasks: [PelicanBatchableTask], didComplete: @escaping ((PelicanProcessResult) -> Void)) {
-        // In this case, we'll create JSON from tasks and send it to our API.
-        let json = tasks.map { $0.dictionary }
-        API.shared.postEvents(json: json) { error in
+        // Construct JSON to pass to your API.
+        let postData = Data()
+        API.shared.postEvents(json: postData) { error in
             if error == nil {
                 didComplete(PelicanProcessResult.done)
             } else {
@@ -40,6 +40,7 @@ extension AppEvents {
     }
 }
 
+// Using compiler generated conformance since PelicanBatchableTask refines Codable
 struct LogInEvent: PelicanBatchableTask, AppEvents {
     let eventName: String = "Log In"
     let timeStamp: Date
@@ -52,29 +53,16 @@ struct LogInEvent: PelicanBatchableTask, AppEvents {
 
     // PelicanBatchableTask conformance, used to read and store task to storage
     static let taskType: String = String(describing: LogInEvent.self)
-
-    init?(dictionary: [String : Any]) {
-        guard let timeStamp = dictionary["timeStamp"] as? Date,
-            let userName = dictionary["userName"] as? String else {
-                return nil
-        }
-        self.timeStamp = timeStamp
-        self.userName = userName
-    }
-
-    var dictionary: [String : Any] {
-        return [
-            "timeStamp": timeStamp,
-            "userName": userName
-        ]
-    }
 }
 ```
 
-Register your batchable tasks as soon as possible, for example in ```application(_ application: UIApplication, didFinishLaunchingWithOptions...```
+Register your batchable tasks and initialize Pelican as soon as possible, for example in ```application(_ application: UIApplication, didFinishLaunchingWithOptions...```
 
 ```swift
-Pelican.register(tasks: [LogInEvent.self])
+var tasks = Pelican.RegisteredTasks()
+tasks.register(for: LogInEvent.self)
+
+Pelican.initialize(tasks: tasks)
 ```
 
 When the user performs an event we log it with Pelican, after 5 seconds events are grouped and ```processGroup``` is called to send them.

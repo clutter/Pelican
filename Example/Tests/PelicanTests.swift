@@ -9,7 +9,7 @@
 import XCTest
 @testable import Pelican
 
-fileprivate class TaskCollector {
+private class TaskCollector {
     enum Task {
         case taskA(value: HouseAtreides)
         case taskB(value: HouseHarkonnen)
@@ -53,7 +53,7 @@ fileprivate class TaskCollector {
     }
 }
 
-fileprivate protocol DuneCharacter: PelicanGroupable {
+private protocol DuneCharacter: PelicanGroupable {
     var name: String { get }
 }
 
@@ -68,7 +68,7 @@ extension DuneCharacter where Self: PelicanBatchableTask {
     }
 }
 
-fileprivate struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
+private struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
     let name: String
     let timeStamp: Date
 
@@ -79,25 +79,9 @@ fileprivate struct HouseAtreides: PelicanBatchableTask, DuneCharacter {
 
     // PelicanBatchableTask conformance, used to read and store task to storage
     static let taskType: String = String(describing: HouseAtreides.self)
-
-    init?(dictionary: [String : Any]) {
-        guard let timeStamp = dictionary["timeStamp"] as? Date,
-            let name = dictionary["name"] as? String else {
-                fatalError()
-        }
-        self.timeStamp = timeStamp
-        self.name = name
-    }
-
-    var dictionary: [String : Any] {
-        return [
-            "timeStamp": timeStamp,
-            "name": name
-        ]
-    }
 }
 
-fileprivate struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
+private struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
     let name: String
     let weapon: String
 
@@ -108,36 +92,33 @@ fileprivate struct HouseHarkonnen: PelicanBatchableTask, DuneCharacter {
 
     // PelicanBatchableTask conformance, used to read and store task to storage
     static let taskType: String = String(describing: HouseHarkonnen.self)
-
-    init?(dictionary: [String : Any]) {
-        guard let weapon = dictionary["weapon"] as? String,
-            let name = dictionary["name"] as? String else {
-                fatalError()
-        }
-        self.weapon = weapon
-        self.name = name
-    }
-
-    var dictionary: [String : Any] {
-        return [
-            "weapon": weapon,
-            "name": name
-        ]
-    }
 }
 
 /// Test the example code in the ReadMe
 
-class PelicanTests: XCTestCase {
-    func testExample() {
-        let letosDate: Date = Date.distantFuture
-        let paulsDate: Date = Date.distantFuture.addingTimeInterval(-6000)
-        let storage = InMemoryStorage()
+class PelicanSavingAndRecoveringFromAppState: XCTestCase {
+    let letosDate: Date = Date.distantFuture
+    let paulsDate: Date = Date.distantFuture.addingTimeInterval(-6000)
+    var storage: InMemoryStorage!
+
+    override func setUp() {
+        storage = InMemoryStorage()
 
         // Start by registering and immediately adding 2 tasks
         TaskCollector.shared.collected = []
-        Pelican.register(tasks: [HouseAtreides.self, HouseHarkonnen.self], storage: storage)
-        defer { Pelican.shared.stop() }
+
+        var tasks = Pelican.RegisteredTasks()
+        tasks.register(for: HouseAtreides.self)
+        tasks.register(for: HouseHarkonnen.self)
+        Pelican.initialize(tasks: tasks, storage: storage)
+    }
+
+    override func tearDown() {
+        Pelican.shared.stop()
+        storage = nil
+    }
+
+    func testSavesWhenBackgroundedRecoversWhenForegrounded() {
         Pelican.shared.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: letosDate))
         Pelican.shared.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
 
@@ -163,7 +144,7 @@ class PelicanTests: XCTestCase {
         Pelican.shared.gulp(task: HouseHarkonnen(name: "Baron Vladimir Harkonnen", weapon: "cunning"))
 
         Pelican.shared.didEnterBackground()
-        XCTAssert(storage.store?["Dune Character Group"]?.count == 2)
+        XCTAssert(storage["Dune Character Group"].count == 2)
 
         Pelican.shared.willEnterForeground()
 
@@ -178,15 +159,15 @@ class PelicanTests: XCTestCase {
         let moreTasksGulped = expectation(description: "More Tasks Gulped and Processed")
         DispatchQueue.global(qos: .userInitiated).asyncAfter(deadline: .now() + .seconds(6)) {
             let taskCount = TaskCollector.shared.collected.count
-            XCTAssert(taskCount == 2, "Task count is \(taskCount)")
+            XCTAssertEqual(taskCount, 2)
 
-            let paul = TaskCollector.shared.collected[0].houseAtreides!
-            XCTAssert(paul.name == "Paul Atreides")
-            XCTAssert(paul.timeStamp == paulsDate)
+            let paul = TaskCollector.shared.collected[0].houseAtreides
+            XCTAssertEqual(paul?.name, "Paul Atreides")
+            XCTAssertEqual(paul?.timeStamp, self.paulsDate)
 
-            let baron = TaskCollector.shared.collected[1].houseHarkonnen!
-            XCTAssert(baron.name == "Baron Vladimir Harkonnen")
-            XCTAssert(baron.weapon == "cunning")
+            let baron = TaskCollector.shared.collected[1].houseHarkonnen
+            XCTAssertEqual(baron?.name, "Baron Vladimir Harkonnen")
+            XCTAssertEqual(baron?.weapon, "cunning")
             moreTasksGulped.fulfill()
         }
 
@@ -195,97 +176,107 @@ class PelicanTests: XCTestCase {
         Pelican.shared.didEnterBackground()
         XCTAssert(storage.store == nil)
     }
+}
 
-    func testArchiveGroupsDoesNotSaveTaskGroupsToStorageWhenNoGroups() {
-        let storage = InMemoryStorage()
-        // This is done to test that we are calling deleteAll (which sets the storage to nil) properly
-        storage.store = [:]
-        let pelican = Pelican(typeToTask: [:], storage: storage)
-        defer { pelican.stop() }
+class PelicanStoresOnGulpTests: XCTestCase {
+    var storage: InMemoryStorage!
+    var pelican: Pelican!
 
+    override func setUp() {
+        storage = InMemoryStorage()
+
+        var tasks = Pelican.RegisteredTasks()
+        tasks.register(for: HouseAtreides.self)
+        tasks.register(for: HouseHarkonnen.self)
+
+        pelican = Pelican(tasks: tasks, storage: storage)
+    }
+
+    override func tearDown() {
+        pelican.stop()
+        pelican = nil
+        storage = nil
+    }
+
+    func testArchiveWithNoTasksSucceeds() {
         pelican.archiveGroups()
-
-        // This should be nil, since we shouldn't call overwriteGroups
+        // This should be nil, since we didn't gulp anything
         XCTAssertNil(storage.store)
     }
 
     func testArchiveGroupsSavesTasksToStorage() {
-        let storage = InMemoryStorage()
-        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self,
-                                                                HouseHarkonnen.taskType: HouseHarkonnen.self ]
-        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
-        defer { pelican.stop() }
-
         pelican.gulp(task: HouseAtreides(name: "Duke Leto", birthdate: .distantPast))
         pelican.gulp(task: HouseHarkonnen(name: "Glossu Rabban", weapon: "brutishness"))
 
         pelican.archiveGroups()
 
-        // This should be set to 1 because both tasks are a part of the "Dune Character Group"
-        XCTAssertEqual(storage.store?.count, 1)
-        if let duneCharacterGroup = storage.store?["Dune Character Group"] {
-            guard duneCharacterGroup.count == 2 else {
-                XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
-                return
-            }
-
-            if let taskOne = duneCharacterGroup[0]["task"] as? [String: Any] {
-                XCTAssertEqual(taskOne["name"] as? String, "Duke Leto")
-                XCTAssertEqual(taskOne["timeStamp"] as? Date, .distantPast)
-            } else {
-                XCTFail("Missing task dictionary for first task")
-            }
-
-            if let taskTwo = duneCharacterGroup[1]["task"] as? [String: Any] {
-                XCTAssertEqual(taskTwo["name"] as? String, "Glossu Rabban")
-                XCTAssertEqual(taskTwo["weapon"] as? String, "brutishness")
-            } else {
-                XCTFail("Missing task dictionary for second task")
-            }
-        } else {
-            XCTFail("Storage does not contain correct group")
+        let duneCharacterGroup = storage["Dune Character Group"]
+        guard duneCharacterGroup.count == 2 else {
+            XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
+            return
         }
+
+        if let taskOne = duneCharacterGroup[0].task as? HouseAtreides {
+            XCTAssertEqual(taskOne.name, "Duke Leto")
+            XCTAssertEqual(taskOne.timeStamp, .distantPast)
+        } else {
+            XCTFail("Expecting first task to be HouseAtreides")
+        }
+
+        if let taskTwo = duneCharacterGroup[1].task as? HouseHarkonnen {
+            XCTAssertEqual(taskTwo.name, "Glossu Rabban")
+            XCTAssertEqual(taskTwo.weapon, "brutishness")
+        } else {
+            XCTFail("Expecting second task to be HouseHarkonnen")
+        }
+    }
+}
+
+class PelicanLoadsFromStorageTests: XCTestCase {
+    var storage: InMemoryStorage!
+    var pelican: Pelican!
+
+    override func setUp() {
+        storage = InMemoryStorage()
+
+        var tasks = Pelican.RegisteredTasks()
+        tasks.register(for: HouseAtreides.self)
+        tasks.register(for: HouseHarkonnen.self)
+
+        pelican = Pelican(tasks: tasks, storage: storage)
+    }
+
+    override func tearDown() {
+        pelican.stop()
+        pelican = nil
+        storage = nil
     }
 
     func testUnarchiveGroupsLoadsNoTaskGroupsFromEmptyStorage() {
-        let storage = InMemoryStorage()
-        storage.store = [:]
-
-        let pelican = Pelican(typeToTask: [:], storage: storage)
-        defer { pelican.stop() }
-
         pelican.unarchiveGroups()
 
         XCTAssertTrue(pelican.groupedTasks.allTasks().isEmpty)
-        // This should be nil, since we set storage to empty after unarchiving
         XCTAssertNil(storage.store)
     }
 
     func testUnarchiveGroupsLoadsArchivedTasksFromStorage() {
-        let storage = InMemoryStorage()
-        let typeToTask: [String: PelicanBatchableTask.Type] = [ HouseAtreides.taskType: HouseAtreides.self ]
+        let task = TaskContainer(task: HouseAtreides(name: "Duke Leto", birthdate: Date.distantPast))
 
-        let serializedTask: [String: Any] = [ "id": "foo",
-                                              "task": [ "name": "Duke Leto", "timeStamp": Date.distantPast],
-                                              "taskType": HouseAtreides.taskType ]
-        storage.store = [ "Dune Character Group": [ serializedTask ] ]
-
-        let pelican = Pelican(typeToTask: typeToTask, storage: storage)
-        defer { pelican.stop() }
+        storage["Dune Character Group"] = [ task ]
 
         pelican.unarchiveGroups()
 
-        let allGroups = Dictionary(uniqueKeysWithValues: pelican.groupedTasks.allTasks())
+        let allGroups = pelican.groupedTasks.allTasks()
         XCTAssertEqual(allGroups.count, 1)
-        if let duneCharacterGroup = allGroups["Dune Character Group"] {
-            guard duneCharacterGroup.count == 1 else {
+        if let duneCharacterGroup = allGroups.first(where: { $0.group == "Dune Character Group" }) {
+            guard duneCharacterGroup.containers.count == 1 else {
                 XCTFail("Storage does not contain correct number of tasks for \"Dune Character Group\"")
                 return
             }
 
-            let taskContainer = duneCharacterGroup[0]
-            XCTAssertEqual(taskContainer.identifier, "foo")
-            XCTAssertEqual(taskContainer.containerDictionary["taskType"] as? String, HouseAtreides.taskType)
+            let taskContainer = duneCharacterGroup.containers[0]
+            XCTAssertEqual(taskContainer.identifier, task.identifier)
+            XCTAssertEqual(taskContainer.taskType, HouseAtreides.taskType)
             if let task = taskContainer.task as? HouseAtreides {
                 XCTAssertEqual(task.name, "Duke Leto")
                 XCTAssertEqual(task.timeStamp, Date.distantPast)
@@ -294,6 +285,29 @@ class PelicanTests: XCTestCase {
             }
         } else {
             XCTFail("Storage does not contain correct group")
+        }
+    }
+}
+
+extension InMemoryStorage {
+    subscript(groupName: String) -> [TaskContainer] {
+        get {
+            guard let data = store,
+                let taskGroups = try? JSONDecoder().decode([GroupedTasks.GroupAndContainers].self, from: data) else {
+                    return []
+            }
+
+            return taskGroups.first(where: { $0.group == groupName })?.containers ?? []
+        }
+
+        set {
+            guard !newValue.isEmpty else {
+                store = nil
+                return
+            }
+
+            let group = GroupedTasks.GroupAndContainers(group: groupName, containers: newValue)
+            store = try? JSONEncoder().encode([group])
         }
     }
 }

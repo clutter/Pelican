@@ -9,8 +9,7 @@
 import Foundation
 
 public protocol PelicanStorage {
-    typealias Serialized = [String: [[String: Any]]]
-    func overwrite(taskGroups: Serialized)
-    func loadTaskGroups() -> Serialized?
-    func deleteAll()
+    func pelicanOverwriteStorage(with data: Data)
+    func pelicanLoadFromStorage() -> Data?
+    func pelicanDeleteAll()
 }

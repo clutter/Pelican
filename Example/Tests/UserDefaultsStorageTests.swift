@@ -3,26 +3,21 @@ import XCTest
 import Pelican
 
 class UserDefaultsStorageTests: XCTestCase {
-    func testStorage() {
+    func testRoundTripAndDelete() {
         let storage = PelicanUserDefaultsStorage()
-        storage.deleteAll()
 
-        XCTAssert(storage.loadTaskGroups() == nil)
+        storage.pelicanDeleteAll()
+        XCTAssert(storage.pelicanLoadFromStorage() == nil)
 
-        let storeMe: PelicanStorage.Serialized = [
-            "groupA": [
-                ["key": "value"]
-            ],
-            "groupB": [
-                ["key": "value"]
-            ]
-        ]
-        storage.overwrite(taskGroups: storeMe)
+        let storeMe = "Test Data"
+        let dataToStore = Data(storeMe.utf8)
 
-        let tasks = storage.loadTaskGroups()
-        XCTAssert(tasks?.keys.count == 2)
+        storage.pelicanOverwriteStorage(with: dataToStore)
 
-        storage.deleteAll()
-        XCTAssert(storage.loadTaskGroups() == nil)
+        let dataFromStorage = storage.pelicanLoadFromStorage()
+        XCTAssertEqual(dataToStore, dataFromStorage)
+
+        storage.pelicanDeleteAll()
+        XCTAssert(storage.pelicanLoadFromStorage() == nil)
     }
 }
