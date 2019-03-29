@@ -7,221 +7,239 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		090598F5C53313C2A4A07FB878003AA9 /* Pods-Pelican_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFE4467604881B562C155DC652804E16 /* Pods-Pelican_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		200D5BC0741ED20BDC67EDF92DCD960F /* Pods-Pelican_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A7BA74BF7CA28F32F68CB8CEFD3D42 /* Pods-Pelican_Tests-dummy.m */; };
-		47325C07619058C15A06BECC5F37CAE2 /* Pelican-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DD40E5E2549FDBBB2451BE1991666AD6 /* Pelican-dummy.m */; };
-		50A10044A31A1F890E210A9FDEA0999B /* Pelican-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A3F31FF86BDA12B88363D7FF82E7E9 /* Pelican-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		591E709CA8644E662B57791678B3D2AD /* GroupedTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB71903B78C8AACD5F2C6FF40964BB4 /* GroupedTasks.swift */; };
-		8158933D8B2B2F69A6A21135654A4717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		95FB10B00EBD7232EB1CEBF175CFC8E6 /* PelicanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB77F3BBF22321BECDD1AECAC8281F4 /* PelicanStorage.swift */; };
-		9D01A2C8A536FB1C6387063D70899D9D /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA504DCBAD62DB3FDA146A84283A449B /* Pelican.swift */; };
-		AAD1C9D4960F10127CBE23791515BADD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		AF59818D223B19B2003D1648 /* TaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59818C223B19B2003D1648 /* TaskContainer.swift */; };
-		BFA9656243ABCCF3E3E7963B2709EFAF /* StorablePelicanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */; };
-		E041732AFCFFCA64B27CA4AA0EEA8A1C /* PelicanUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD38F0154156D979824124EEE997040 /* PelicanUserDefaultsStorage.swift */; };
+		0AD1111D98AC406EA61E24E31DFABE82 /* Pods-Pelican_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D07DBF3A0945B3E93EF8DDCF3C515373 /* Pods-Pelican_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		331C93F1E1D5435E341E7836F7352119 /* Pelican-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71DADF09EF7446519C5A1B22DA629C2D /* Pelican-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43DEEFBCFCE42B34AEE985E1FC229CA3 /* PelicanStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F008350B8312E3999591E66F81E5D5 /* PelicanStorage.swift */; };
+		55CB05FCFD2A5B333C4EFD6F0BDCE7CE /* Pelican-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B854617EDAB9D7D3A9E807DACFE55F4F /* Pelican-dummy.m */; };
+		713ECE766913C917CFE62BD6D242A797 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		75E8BD03D42B44DF2125FCC9AB305198 /* StorablePelicanTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1812EE330F6A07B50EC00BBF0C377E83 /* StorablePelicanTask.swift */; };
+		9F686B480A3744363964CD19DBB6F919 /* TaskContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E40A109FD22D29773B679005F7A404 /* TaskContainer.swift */; };
+		C52862521B60ED0FEBA7F02A2C782420 /* Pelican.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC44BD940D8C88EDD69741C105532A8E /* Pelican.swift */; };
+		CE5B9B9A0E1119F56263201C6943B8F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
+		F3CD074BE7EFABEF94F1467152DD08F9 /* GroupedTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BDBF2A2BA2BD11D06DBC515C7C0CE5 /* GroupedTasks.swift */; };
+		F41D5525DA0C7A5F0A73D295E1A7673F /* Pods-Pelican_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F662D0C27CBBF50A7AF5E8C819A48F92 /* Pods-Pelican_Tests-dummy.m */; };
+		FD689FE26AB380E0EB1E708179CC9621 /* PelicanUserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B51ECF1726666917C33240B8DF9F2A9 /* PelicanUserDefaultsStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		73DACC207D9AFCABCC6E0DE5670B0900 /* PBXContainerItemProxy */ = {
+		F2289F27F328E0660A3BFCE459976001 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E289738EB00A567EEF13A14C0AED69F3;
+			remoteGlobalIDString = B9574AD4A0F632A3DE7933D01ED75F07;
 			remoteInfo = Pelican;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		061C60EAC3913EB53DBFDD08A68BAD86 /* Pods-Pelican_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pelican_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0831EFE19CC53D1A9BDA4ECD70FCE97B /* Pelican.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Pelican.modulemap; sourceTree = "<group>"; };
-		2F8A0805F0B22EF923D90573D6C54324 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		409B25B8329EF26B6BF27996000F76DD /* Pelican-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-prefix.pch"; sourceTree = "<group>"; };
-		4BD9FAB23F2582E31EFED302ABBE75FA /* Pelican.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pelican.xcconfig; sourceTree = "<group>"; };
-		4ECB75449C1693651302E50B2E8A6E71 /* Pelican.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pelican.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5AB71903B78C8AACD5F2C6FF40964BB4 /* GroupedTasks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupedTasks.swift; path = Pelican/Lib/GroupedTasks.swift; sourceTree = "<group>"; };
-		5FB77F3BBF22321BECDD1AECAC8281F4 /* PelicanStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanStorage.swift; path = Pelican/Lib/PelicanStorage.swift; sourceTree = "<group>"; };
-		65B4B90C6B16CE94DB3C7A12EBA629D8 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		723C53DC2D393BF2CEBCC2F7851CA95F /* Pods-Pelican_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorablePelicanTask.swift; path = Pelican/Lib/StorablePelicanTask.swift; sourceTree = "<group>"; };
-		82F0A175B3CF4045252783687C361DE4 /* Pods-Pelican_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8B14AD51D284EA7DB01598B12D88F560 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92A7BA74BF7CA28F32F68CB8CEFD3D42 /* Pods-Pelican_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pelican_Tests-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A180FC78F9CD221E711848516AEC6FC0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		AF59818C223B19B2003D1648 /* TaskContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskContainer.swift; path = Pelican/Lib/TaskContainer.swift; sourceTree = "<group>"; };
-		C7B60F4995E16D9B6704907A39B089CD /* Pelican.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = Pelican.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		CAD38F0154156D979824124EEE997040 /* PelicanUserDefaultsStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanUserDefaultsStorage.swift; path = Pelican/Lib/PelicanUserDefaultsStorage.swift; sourceTree = "<group>"; };
-		CFE4467604881B562C155DC652804E16 /* Pods-Pelican_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pelican_Tests-umbrella.h"; sourceTree = "<group>"; };
-		DA7DDD4F28BD08245304AA5A043A5D97 /* Pods-Pelican_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pelican_Tests-resources.sh"; sourceTree = "<group>"; };
-		DD40E5E2549FDBBB2451BE1991666AD6 /* Pelican-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pelican-dummy.m"; sourceTree = "<group>"; };
-		E049C8804496C4271A6F043ECE32C5EB /* Pods-Pelican_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pelican_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E8626262B5A6DE0DBA2550FAF4888997 /* Pods-Pelican_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pelican_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		F5A3F31FF86BDA12B88363D7FF82E7E9 /* Pelican-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-umbrella.h"; sourceTree = "<group>"; };
-		FA504DCBAD62DB3FDA146A84283A449B /* Pelican.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pelican.swift; path = Pelican/Lib/Pelican.swift; sourceTree = "<group>"; };
-		FBC04D7C106F6967DC92E3163D444A97 /* Pods-Pelican_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pelican_Tests.modulemap"; sourceTree = "<group>"; };
-		FC7D61CEF482B5E24154BC0248AF26DB /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pelican_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CC973D389BE86F5EAEA4CE5D0C04B11 /* Pods-Pelican_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pelican_Tests-Info.plist"; sourceTree = "<group>"; };
+		1812EE330F6A07B50EC00BBF0C377E83 /* StorablePelicanTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StorablePelicanTask.swift; path = Pelican/Lib/StorablePelicanTask.swift; sourceTree = "<group>"; };
+		188D8F191A43603A2C3FFA8D75EC86E3 /* Pelican-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pelican-Info.plist"; sourceTree = "<group>"; };
+		2CCDAA577B659B2F11D3884F595EE5E5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		36E7296EC8AC65C660EF397751F220EE /* Pods-Pelican_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Pelican_Tests.modulemap"; sourceTree = "<group>"; };
+		3B51ECF1726666917C33240B8DF9F2A9 /* PelicanUserDefaultsStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanUserDefaultsStorage.swift; path = Pelican/Lib/PelicanUserDefaultsStorage.swift; sourceTree = "<group>"; };
+		3DC24BD6568147C170A39088B4C58270 /* Pods-Pelican_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		48FF9823A8E3A03EEE12957C2EF65DE6 /* Pods_Pelican_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Pelican_Tests.framework; path = "Pods-Pelican_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E6BE6D0AF07DEEEBAA7901F0AC6AF3A /* Pelican.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Pelican.modulemap; sourceTree = "<group>"; };
+		66E40A109FD22D29773B679005F7A404 /* TaskContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskContainer.swift; path = Pelican/Lib/TaskContainer.swift; sourceTree = "<group>"; };
+		68A3BD6A93542AB5E22B6791805D502C /* Pods-Pelican_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Pelican_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		71D577E421F1C5738A31B338DB1A29AA /* Pelican.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pelican.xcconfig; sourceTree = "<group>"; };
+		71DADF09EF7446519C5A1B22DA629C2D /* Pelican-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-umbrella.h"; sourceTree = "<group>"; };
+		8B945FDEF68923DE6BC4F73E45E588FD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9350A721546E367FD4F7ABEDFADD0B5C /* Pelican.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = Pelican.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0CC99F982AA193B7FE9911BF66102A0 /* Pelican.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pelican.framework; path = Pelican.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC44BD940D8C88EDD69741C105532A8E /* Pelican.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pelican.swift; path = Pelican/Lib/Pelican.swift; sourceTree = "<group>"; };
+		B2F008350B8312E3999591E66F81E5D5 /* PelicanStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PelicanStorage.swift; path = Pelican/Lib/PelicanStorage.swift; sourceTree = "<group>"; };
+		B341BE2AFAA3DC4E1634D6EF898A1C37 /* Pods-Pelican_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Pelican_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		B5BDBF2A2BA2BD11D06DBC515C7C0CE5 /* GroupedTasks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupedTasks.swift; path = Pelican/Lib/GroupedTasks.swift; sourceTree = "<group>"; };
+		B854617EDAB9D7D3A9E807DACFE55F4F /* Pelican-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pelican-dummy.m"; sourceTree = "<group>"; };
+		C655BC706FD0F398EF51A0E80C245161 /* Pelican-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pelican-prefix.pch"; sourceTree = "<group>"; };
+		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D07DBF3A0945B3E93EF8DDCF3C515373 /* Pods-Pelican_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Pelican_Tests-umbrella.h"; sourceTree = "<group>"; };
+		DC0E5DEE9905765FFE168367A8D518F9 /* Pods-Pelican_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Pelican_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		F662D0C27CBBF50A7AF5E8C819A48F92 /* Pods-Pelican_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Pelican_Tests-dummy.m"; sourceTree = "<group>"; };
+		FE91162720737F82098308277949AB91 /* Pods-Pelican_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Pelican_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3A290AD17606239ED4C4906C04710A08 /* Frameworks */ = {
+		9A10C33EA03577DAF6FFDC2D0C42908E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8158933D8B2B2F69A6A21135654A4717 /* Foundation.framework in Frameworks */,
+				713ECE766913C917CFE62BD6D242A797 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5B7ED4844A7CD50B3C5987619D7976A /* Frameworks */ = {
+		FCCC19735F63EDF08287941939CB2E6F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD1C9D4960F10127CBE23791515BADD /* Foundation.framework in Frameworks */,
+				CE5B9B9A0E1119F56263201C6943B8F0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B31161F1A09987223BA4058942003E1 /* Products */ = {
+		451C60D351BD2AF226A0883E80722DF5 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4ECB75449C1693651302E50B2E8A6E71 /* Pelican.framework */,
-				FC7D61CEF482B5E24154BC0248AF26DB /* Pods_Pelican_Tests.framework */,
+				8EDDE62CEF37B304BAC3B4A97EB1945D /* Pods-Pelican_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		4D498C28400C76A39EB52DFD1531E934 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A0CC99F982AA193B7FE9911BF66102A0 /* Pelican.framework */,
+				48FF9823A8E3A03EEE12957C2EF65DE6 /* Pods_Pelican_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		478CCD2F189BA2E91802507EBF8006A8 /* Pod */ = {
+		8222E69F35D490E9F8D55C7DF32B5D7A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				A180FC78F9CD221E711848516AEC6FC0 /* LICENSE */,
-				C7B60F4995E16D9B6704907A39B089CD /* Pelican.podspec */,
-				65B4B90C6B16CE94DB3C7A12EBA629D8 /* README.md */,
+				2CCDAA577B659B2F11D3884F595EE5E5 /* LICENSE */,
+				9350A721546E367FD4F7ABEDFADD0B5C /* Pelican.podspec */,
+				8B945FDEF68923DE6BC4F73E45E588FD /* README.md */,
 			);
 			name = Pod;
 			sourceTree = "<group>";
 		};
-		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+		883DE63418835CEDDF03246ACC32AA38 /* Pelican */ = {
 			isa = PBXGroup;
 			children = (
-				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		7466901CDC763722261DFB24B43FBD6B /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D149F97CDDBC8956A3A5D613BADF8525 /* Pelican */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				7466901CDC763722261DFB24B43FBD6B /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				0B31161F1A09987223BA4058942003E1 /* Products */,
-				DCF0227181B8BB338CB8767BE8B3ADC7 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		8D5223EBF07D3D4AE3068CAE85E626DF /* Pods-Pelican_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				8B14AD51D284EA7DB01598B12D88F560 /* Info.plist */,
-				FBC04D7C106F6967DC92E3163D444A97 /* Pods-Pelican_Tests.modulemap */,
-				061C60EAC3913EB53DBFDD08A68BAD86 /* Pods-Pelican_Tests-acknowledgements.markdown */,
-				E049C8804496C4271A6F043ECE32C5EB /* Pods-Pelican_Tests-acknowledgements.plist */,
-				92A7BA74BF7CA28F32F68CB8CEFD3D42 /* Pods-Pelican_Tests-dummy.m */,
-				E8626262B5A6DE0DBA2550FAF4888997 /* Pods-Pelican_Tests-frameworks.sh */,
-				DA7DDD4F28BD08245304AA5A043A5D97 /* Pods-Pelican_Tests-resources.sh */,
-				CFE4467604881B562C155DC652804E16 /* Pods-Pelican_Tests-umbrella.h */,
-				82F0A175B3CF4045252783687C361DE4 /* Pods-Pelican_Tests.debug.xcconfig */,
-				723C53DC2D393BF2CEBCC2F7851CA95F /* Pods-Pelican_Tests.release.xcconfig */,
-			);
-			name = "Pods-Pelican_Tests";
-			path = "Target Support Files/Pods-Pelican_Tests";
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5E0D919E635D23B70123790B8308F8EF /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C1F6F587C146ACE627FE7DFA8FBF93C0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2F8A0805F0B22EF923D90573D6C54324 /* Info.plist */,
-				0831EFE19CC53D1A9BDA4ECD70FCE97B /* Pelican.modulemap */,
-				4BD9FAB23F2582E31EFED302ABBE75FA /* Pelican.xcconfig */,
-				DD40E5E2549FDBBB2451BE1991666AD6 /* Pelican-dummy.m */,
-				409B25B8329EF26B6BF27996000F76DD /* Pelican-prefix.pch */,
-				F5A3F31FF86BDA12B88363D7FF82E7E9 /* Pelican-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/Pelican";
-			sourceTree = "<group>";
-		};
-		D149F97CDDBC8956A3A5D613BADF8525 /* Pelican */ = {
-			isa = PBXGroup;
-			children = (
-				5AB71903B78C8AACD5F2C6FF40964BB4 /* GroupedTasks.swift */,
-				FA504DCBAD62DB3FDA146A84283A449B /* Pelican.swift */,
-				5FB77F3BBF22321BECDD1AECAC8281F4 /* PelicanStorage.swift */,
-				CAD38F0154156D979824124EEE997040 /* PelicanUserDefaultsStorage.swift */,
-				82D2BC5DF4C13B77475EE33C212D14B0 /* StorablePelicanTask.swift */,
-				478CCD2F189BA2E91802507EBF8006A8 /* Pod */,
-				C1F6F587C146ACE627FE7DFA8FBF93C0 /* Support Files */,
-				AF59818C223B19B2003D1648 /* TaskContainer.swift */,
+				B5BDBF2A2BA2BD11D06DBC515C7C0CE5 /* GroupedTasks.swift */,
+				AC44BD940D8C88EDD69741C105532A8E /* Pelican.swift */,
+				B2F008350B8312E3999591E66F81E5D5 /* PelicanStorage.swift */,
+				3B51ECF1726666917C33240B8DF9F2A9 /* PelicanUserDefaultsStorage.swift */,
+				1812EE330F6A07B50EC00BBF0C377E83 /* StorablePelicanTask.swift */,
+				66E40A109FD22D29773B679005F7A404 /* TaskContainer.swift */,
+				8222E69F35D490E9F8D55C7DF32B5D7A /* Pod */,
+				C8E50BA0CAFD4F41AC02B6978F5DA881 /* Support Files */,
 			);
 			name = Pelican;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		DCF0227181B8BB338CB8767BE8B3ADC7 /* Targets Support Files */ = {
+		8EDDE62CEF37B304BAC3B4A97EB1945D /* Pods-Pelican_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				8D5223EBF07D3D4AE3068CAE85E626DF /* Pods-Pelican_Tests */,
+				36E7296EC8AC65C660EF397751F220EE /* Pods-Pelican_Tests.modulemap */,
+				FE91162720737F82098308277949AB91 /* Pods-Pelican_Tests-acknowledgements.markdown */,
+				68A3BD6A93542AB5E22B6791805D502C /* Pods-Pelican_Tests-acknowledgements.plist */,
+				F662D0C27CBBF50A7AF5E8C819A48F92 /* Pods-Pelican_Tests-dummy.m */,
+				DC0E5DEE9905765FFE168367A8D518F9 /* Pods-Pelican_Tests-frameworks.sh */,
+				0CC973D389BE86F5EAEA4CE5D0C04B11 /* Pods-Pelican_Tests-Info.plist */,
+				D07DBF3A0945B3E93EF8DDCF3C515373 /* Pods-Pelican_Tests-umbrella.h */,
+				3DC24BD6568147C170A39088B4C58270 /* Pods-Pelican_Tests.debug.xcconfig */,
+				B341BE2AFAA3DC4E1634D6EF898A1C37 /* Pods-Pelican_Tests.release.xcconfig */,
 			);
-			name = "Targets Support Files";
+			name = "Pods-Pelican_Tests";
+			path = "Target Support Files/Pods-Pelican_Tests";
+			sourceTree = "<group>";
+		};
+		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		BE740C74CFE0F9BC27D097F9AA06E0EF /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				883DE63418835CEDDF03246ACC32AA38 /* Pelican */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C8E50BA0CAFD4F41AC02B6978F5DA881 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4E6BE6D0AF07DEEEBAA7901F0AC6AF3A /* Pelican.modulemap */,
+				71D577E421F1C5738A31B338DB1A29AA /* Pelican.xcconfig */,
+				B854617EDAB9D7D3A9E807DACFE55F4F /* Pelican-dummy.m */,
+				188D8F191A43603A2C3FFA8D75EC86E3 /* Pelican-Info.plist */,
+				C655BC706FD0F398EF51A0E80C245161 /* Pelican-prefix.pch */,
+				71DADF09EF7446519C5A1B22DA629C2D /* Pelican-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/Pelican";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				BE740C74CFE0F9BC27D097F9AA06E0EF /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				4D498C28400C76A39EB52DFD1531E934 /* Products */,
+				451C60D351BD2AF226A0883E80722DF5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3B1BB321EB899276923D639164EC80BE /* Headers */ = {
+		8585BD7DC8E19E3F5B41715D4598478C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				090598F5C53313C2A4A07FB878003AA9 /* Pods-Pelican_Tests-umbrella.h in Headers */,
+				0AD1111D98AC406EA61E24E31DFABE82 /* Pods-Pelican_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD8EB943D33E441CCED11E84AFB19744 /* Headers */ = {
+		B0A302F070568BD5433F256681E67655 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50A10044A31A1F890E210A9FDEA0999B /* Pelican-umbrella.h in Headers */,
+				331C93F1E1D5435E341E7836F7352119 /* Pelican-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E289738EB00A567EEF13A14C0AED69F3 /* Pelican */ = {
+		3AC5CD45D3A25F2FDBAA0001DBCE30C0 /* Pods-Pelican_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A3EC7B5A0E4D089A069C0663AEE8360 /* Build configuration list for PBXNativeTarget "Pelican" */;
+			buildConfigurationList = 8B006D7184844D2740A2D68986111DA5 /* Build configuration list for PBXNativeTarget "Pods-Pelican_Tests" */;
 			buildPhases = (
-				0B1F3503081DE34CC0980D1D1A6EBFF1 /* Sources */,
-				3A290AD17606239ED4C4906C04710A08 /* Frameworks */,
-				BD8EB943D33E441CCED11E84AFB19744 /* Headers */,
+				8585BD7DC8E19E3F5B41715D4598478C /* Headers */,
+				B4800B82829B6E9796A94CA57A68D1A3 /* Sources */,
+				9A10C33EA03577DAF6FFDC2D0C42908E /* Frameworks */,
+				31F37416E0127842191CFA17A3C95A5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D0735D3E49CC4545D511D0EE7DC58608 /* PBXTargetDependency */,
+			);
+			name = "Pods-Pelican_Tests";
+			productName = "Pods-Pelican_Tests";
+			productReference = 48FF9823A8E3A03EEE12957C2EF65DE6 /* Pods_Pelican_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B9574AD4A0F632A3DE7933D01ED75F07 /* Pelican */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2607CEB6251D5DD74E77CDCD76830B7C /* Build configuration list for PBXNativeTarget "Pelican" */;
+			buildPhases = (
+				B0A302F070568BD5433F256681E67655 /* Headers */,
+				B82648B5AF5C6FD5A8921CAB87F37B65 /* Sources */,
+				FCCC19735F63EDF08287941939CB2E6F /* Frameworks */,
+				9DFAF5F48D20708368039C8B2E04AB8A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -229,158 +247,89 @@
 			);
 			name = Pelican;
 			productName = Pelican;
-			productReference = 4ECB75449C1693651302E50B2E8A6E71 /* Pelican.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E49A4887B1F7F46648A2F0B0EDBB38A3 /* Pods-Pelican_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8453B8EA8EC371306C1C8DE71BE263D6 /* Build configuration list for PBXNativeTarget "Pods-Pelican_Tests" */;
-			buildPhases = (
-				92FA4B940DD04F6ED335C2644337E2F0 /* Sources */,
-				C5B7ED4844A7CD50B3C5987619D7976A /* Frameworks */,
-				3B1BB321EB899276923D639164EC80BE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B900D2E67B7C876607A8FD4E81CE8EDE /* PBXTargetDependency */,
-			);
-			name = "Pods-Pelican_Tests";
-			productName = "Pods-Pelican_Tests";
-			productReference = FC7D61CEF482B5E24154BC0248AF26DB /* Pods_Pelican_Tests.framework */;
+			productReference = A0CC99F982AA193B7FE9911BF66102A0 /* Pelican.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 0B31161F1A09987223BA4058942003E1 /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 4D498C28400C76A39EB52DFD1531E934 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E289738EB00A567EEF13A14C0AED69F3 /* Pelican */,
-				E49A4887B1F7F46648A2F0B0EDBB38A3 /* Pods-Pelican_Tests */,
+				B9574AD4A0F632A3DE7933D01ED75F07 /* Pelican */,
+				3AC5CD45D3A25F2FDBAA0001DBCE30C0 /* Pods-Pelican_Tests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		0B1F3503081DE34CC0980D1D1A6EBFF1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXResourcesBuildPhase section */
+		31F37416E0127842191CFA17A3C95A5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591E709CA8644E662B57791678B3D2AD /* GroupedTasks.swift in Sources */,
-				47325C07619058C15A06BECC5F37CAE2 /* Pelican-dummy.m in Sources */,
-				9D01A2C8A536FB1C6387063D70899D9D /* Pelican.swift in Sources */,
-				95FB10B00EBD7232EB1CEBF175CFC8E6 /* PelicanStorage.swift in Sources */,
-				E041732AFCFFCA64B27CA4AA0EEA8A1C /* PelicanUserDefaultsStorage.swift in Sources */,
-				AF59818D223B19B2003D1648 /* TaskContainer.swift in Sources */,
-				BFA9656243ABCCF3E3E7963B2709EFAF /* StorablePelicanTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92FA4B940DD04F6ED335C2644337E2F0 /* Sources */ = {
+		9DFAF5F48D20708368039C8B2E04AB8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B4800B82829B6E9796A94CA57A68D1A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				200D5BC0741ED20BDC67EDF92DCD960F /* Pods-Pelican_Tests-dummy.m in Sources */,
+				F41D5525DA0C7A5F0A73D295E1A7673F /* Pods-Pelican_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B82648B5AF5C6FD5A8921CAB87F37B65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F3CD074BE7EFABEF94F1467152DD08F9 /* GroupedTasks.swift in Sources */,
+				55CB05FCFD2A5B333C4EFD6F0BDCE7CE /* Pelican-dummy.m in Sources */,
+				C52862521B60ED0FEBA7F02A2C782420 /* Pelican.swift in Sources */,
+				43DEEFBCFCE42B34AEE985E1FC229CA3 /* PelicanStorage.swift in Sources */,
+				FD689FE26AB380E0EB1E708179CC9621 /* PelicanUserDefaultsStorage.swift in Sources */,
+				75E8BD03D42B44DF2125FCC9AB305198 /* StorablePelicanTask.swift in Sources */,
+				9F686B480A3744363964CD19DBB6F919 /* TaskContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B900D2E67B7C876607A8FD4E81CE8EDE /* PBXTargetDependency */ = {
+		D0735D3E49CC4545D511D0EE7DC58608 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Pelican;
-			target = E289738EB00A567EEF13A14C0AED69F3 /* Pelican */;
-			targetProxy = 73DACC207D9AFCABCC6E0DE5670B0900 /* PBXContainerItemProxy */;
+			target = B9574AD4A0F632A3DE7933D01ED75F07 /* Pelican */;
+			targetProxy = F2289F27F328E0660A3BFCE459976001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1BAFC062A9296A9EEAC7B4728E40CE08 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BD9FAB23F2582E31EFED302ABBE75FA /* Pelican.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/Pelican/Pelican-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pelican/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pelican/Pelican.modulemap";
-				PRODUCT_MODULE_NAME = Pelican;
-				PRODUCT_NAME = Pelican;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		30FF0FD04F2F2BF177CE039125375B26 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82F0A175B3CF4045252783687C361DE4 /* Pods-Pelican_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pelican_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		553022A828EE1991F07D2D73F565AEF8 /* Debug */ = {
+		3048B0C5C704DFFF688DA57F5380ED58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -412,8 +361,66 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		5B0C8287D755FD95091CF35D87FB8B2D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -434,76 +441,21 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		58CE816B060A41D32CEC095441D0E3E0 /* Release */ = {
+		8850D8B94D47FE14E4E30BF785E87673 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		A712A89F98ABDABEE3275B0860C02022 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4BD9FAB23F2582E31EFED302ABBE75FA /* Pelican.xcconfig */;
+			baseConfigurationReference = 71D577E421F1C5738A31B338DB1A29AA /* Pelican.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -515,7 +467,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/Pelican/Pelican-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pelican/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pelican/Pelican-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -525,7 +477,37 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8AB68F742B54395F27FADAB9DD4249FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71D577E421F1C5738A31B338DB1A29AA /* Pelican.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Pelican/Pelican-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pelican/Pelican-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pelican/Pelican.modulemap";
+				PRODUCT_MODULE_NAME = Pelican;
+				PRODUCT_NAME = Pelican;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -534,9 +516,9 @@
 			};
 			name = Release;
 		};
-		E858DAE05BC2BB788F042E6ED56C1304 /* Release */ = {
+		9A8520E77B05298855031C69980818F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 723C53DC2D393BF2CEBCC2F7851CA95F /* Pods-Pelican_Tests.release.xcconfig */;
+			baseConfigurationReference = 3DC24BD6568147C170A39088B4C58270 /* Pods-Pelican_Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -549,7 +531,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Pelican_Tests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -562,7 +544,40 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D62424BF6EE749740A917550B0A91AB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B341BE2AFAA3DC4E1634D6EF898A1C37 /* Pods-Pelican_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -573,34 +588,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		2607CEB6251D5DD74E77CDCD76830B7C /* Build configuration list for PBXNativeTarget "Pelican" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				553022A828EE1991F07D2D73F565AEF8 /* Debug */,
-				58CE816B060A41D32CEC095441D0E3E0 /* Release */,
+				8850D8B94D47FE14E4E30BF785E87673 /* Debug */,
+				8AB68F742B54395F27FADAB9DD4249FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A3EC7B5A0E4D089A069C0663AEE8360 /* Build configuration list for PBXNativeTarget "Pelican" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1BAFC062A9296A9EEAC7B4728E40CE08 /* Debug */,
-				A712A89F98ABDABEE3275B0860C02022 /* Release */,
+				5B0C8287D755FD95091CF35D87FB8B2D /* Debug */,
+				3048B0C5C704DFFF688DA57F5380ED58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8453B8EA8EC371306C1C8DE71BE263D6 /* Build configuration list for PBXNativeTarget "Pods-Pelican_Tests" */ = {
+		8B006D7184844D2740A2D68986111DA5 /* Build configuration list for PBXNativeTarget "Pods-Pelican_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				30FF0FD04F2F2BF177CE039125375B26 /* Debug */,
-				E858DAE05BC2BB788F042E6ED56C1304 /* Release */,
+				9A8520E77B05298855031C69980818F9 /* Debug */,
+				D62424BF6EE749740A917550B0A91AB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }
