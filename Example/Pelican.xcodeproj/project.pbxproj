@@ -191,7 +191,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Pelican/Pelican.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -200,7 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pelican_Tests/Pods-Pelican_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9A3B15F27776F612F0E7CF5B /* [CP] Check Pods Manifest.lock */ = {
