@@ -1,7 +1,9 @@
 {
   "name": "Pelican",
   "version": "1.0.0",
-  "swift_versions": "4.2",
+  "swift_versions": [
+    "5.0"
+  ],
   "summary": "Batch processing library written in Swift",
   "description": "Pelican is a persisted batching library useful for log rolling, event logging or doing other periodic background processing.",
   "homepage": "https://github.com/clutter/Pelican",
@@ -20,5 +22,5 @@
     "ios": "8.0"
   },
   "source_files": "Pelican/Lib/**/*",
-  "swift_version": "4.2"
+  "swift_version": "5.0"
 }
