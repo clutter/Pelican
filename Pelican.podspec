@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Pelican'
-  s.version          = '1.0.0'
+  s.version          = '2.0.0'
   s.swift_versions   = ['5.0']
   s.summary          = 'Batch processing library written in Swift'
 

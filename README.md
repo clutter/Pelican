@@ -73,18 +73,22 @@ Pelican.shared.gulp(task: LogInEvent(userName: "Ender Wiggin"))
 
 ## Requirements
 
+Pelican requires Swift 5 or higher.
+
 ## Installation
 
-Pelican is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Pelican is available through [CocoaPods](http://cocoapods.org), and requires
+CocoaPods 1.7.0 or higher.
+
+To install Pelican, add the following line to your Podfile:
 
 ```ruby
-pod "Pelican"
+pod 'Pelican'
 ```
 
 ## Author
 
-bd755bf4f7e672000cab58c4b721a8cdbe22a839, robmanson@gmail.com
+robmanson@gmail.com
 
 ## License
 
