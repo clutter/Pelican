@@ -1,0 +1,7 @@
+platform :ios, '13.3'
+
+target 'PodApp' do
+  use_frameworks!
+
+  pod 'Pelican', path: '../..', :testspecs => ['Tests']
+end
