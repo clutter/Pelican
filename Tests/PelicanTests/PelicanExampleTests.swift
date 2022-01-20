@@ -51,7 +51,7 @@ extension AppEvents {
 }
 
 struct LogInEvent: PelicanBatchableTask, AppEvents {
-    let eventName: String = "Log In"
+    var eventName: String { "Log In" }
     let timeStamp: Date
     let userName: String
 

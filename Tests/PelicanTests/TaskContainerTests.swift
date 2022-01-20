@@ -25,8 +25,13 @@ extension TestGroup {
 }
 
 struct TestTask: PelicanBatchableTask, TestGroup, Equatable {
-    let name = "Test Task"
-    let taskData = "Task Data"
+    let name: String
+    let taskData: String
+
+    init() {
+        self.name = "Test Task"
+        self.taskData = "Task Data"
+    }
 
     // PelicanBatchableTask conformance, used to read and store task to storage
     static let taskType: String = String(describing: TestTask.self)
