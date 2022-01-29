@@ -1,6 +1,0 @@
-framework module Pelican {
-  umbrella header "Pelican-umbrella.h"
-
-  export *
-  module * { export * }
-}

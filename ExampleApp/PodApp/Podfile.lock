@@ -1,0 +1,18 @@
+PODS:
+  - Pelican (2.0.0)
+  - Pelican/Tests (2.0.0)
+
+DEPENDENCIES:
+  - Pelican (from `../..`)
+  - Pelican/Tests (from `../..`)
+
+EXTERNAL SOURCES:
+  Pelican:
+    :path: "../.."
+
+SPEC CHECKSUMS:
+  Pelican: acb01eb024004d133a2019409c2fa8a7443223ba
+
+PODFILE CHECKSUM: 7c2ad6c2e31c663758875732307fb1efe29a0a33
+
+COCOAPODS: 1.10.1
