@@ -14,7 +14,7 @@ Pelican is a persisted batching library useful for log rolling, event logging or
   s.author           = { 'bd755bf4f7e672000cab58c4b721a8cdbe22a839' => 'robmanson@gmail.com' }
   s.source           = { :git => 'https://github.com/clutter/Pelican.git', :tag => s.version.to_s }
 
-  s.source_files = 'Pelican/Lib/**/*'
+  s.source_files = 'Sources/Pelican/*'
 
   s.test_spec 'Tests' do |test_spec|
     test_spec.requires_app_host = false
