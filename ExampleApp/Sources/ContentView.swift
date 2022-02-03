@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  PodApp
+//  SPMApp
 //
 //  Created by Robert Manson on 1/19/22.
 //
