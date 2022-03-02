@@ -22,5 +22,9 @@ DerivedData
 # Bundler
 .bundle
 
-Carthage
+# SPM
+.swiftpm
+.build
+
+# CocoaPods
 ExampleApp/PodApp/Pods

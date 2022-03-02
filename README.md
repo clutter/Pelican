@@ -77,14 +77,7 @@ Pelican requires Swift 5 or higher.
 
 ## Installation
 
-Pelican is available through [CocoaPods](http://cocoapods.org), and requires
-CocoaPods 1.7.0 or higher.
-
-To install Pelican, add the following line to your Podfile:
-
-```ruby
-pod 'Pelican'
-```
+Pelican is available through CocoaPods or Swift Package Manager.
 
 ## Author
 
